@@ -39,20 +39,40 @@
 
                 <form class="login100-form validate-form">
                     <span class="login100-form-title">
-                        Fuel Quote
+                        Fuel Quote Form
                     </span>
 
-                    <h6>Suggested Price / Gallon:</h6>
-                    <p>$ XXX / gallon</p>
-                    <br>
-                    <h6>Total Amount Due:</h6>
-                    <p>$ XXX</p>
+
+                    <div class="wrap-input100 validate-input" data-validate="Gallons requested">
+                        <input class="input100" type="number" name="gallons" required placeholder="Gallons Requested">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-address-card" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="deliveryAdd" required placeholder="Delivery Address">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-address-card" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="date" name="date" required placeholder="Delivery Date">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
 
                     <div class="container-login100-form-btn">
-                        <a class="login100-form-btn" href="fuelquoteform.php" role="button"">
-                            Get New Quote
+                        <a class="login100-form-btn" href="fuelquote.php" role="button"">
+                            Generate Quote
                         </a>
-                    </div>    
+                    </div>                    
 
                 </form>
             </div>
