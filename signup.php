@@ -36,72 +36,6 @@
 						Member Signup
 					</span>
 
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-    						<input class="input100" type="text" name="userfirst" placeholder="First Name">
-    						<span class="focus-input100"></span>
-    						<span class="symbol-input100">
-    							<i class="fa fa-address-card" aria-hidden="true"></i>
-    						</span>
-    					</div>
-            </div>
-            <div class="col-sm-6">
-              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-    						<input class="input100" type="text" name="userlast" placeholder="Last Name">
-    						<span class="focus-input100"></span>
-    						<span class="symbol-input100">
-    							<i class="fa fa-address-card" aria-hidden="true"></i>
-    						</span>
-    					</div>
-            </div>
-          </div>
-
-          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="address1" placeholder="Address">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
-
-          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="address2" placeholder="Address">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
-
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-    						<input class="input100" type="text" name="city" placeholder="City">
-    						<span class="focus-input100"></span>
-    						<span class="symbol-input100">
-    							<i class="fa fa-address-card" aria-hidden="true"></i>
-    						</span>
-    					</div>
-            </div>
-            <div class="col-sm-6">
-              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-    						<select class="input100" type="text" name="state" placeholder="State">
-                  <option value="TX">TX</option>
-                  <option value="AZ">AZ</option>
-                  <option value="MS">MS</option>
-                  <option value="TE">TE</option>
-                  </select>
-    						<span class="focus-input100"></span>
-    						<span class="symbol-input100">
-    							<i class="fas fa-map-signs" aria-hidden="true"></i>
-    						</span>
-    					</div>
-
-
-
-            </div>
-          </div>
-
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
@@ -110,7 +44,7 @@
 						</span>
 					</div>
 
-          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+          <div class="wrap-input100">
             <input class="input100" type="text" name="username" placeholder="Username">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
