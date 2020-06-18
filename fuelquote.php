@@ -25,11 +25,15 @@
 
 <body>
 
+  <?php
+    include 'navbar.php';
+   ?>
+
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
                 <div class="login100-pic js-tilt" data-tilt>
-                    <img style="width: 20rem;" src="images/undraw_receipt_ecdd.svg" alt="IMG">
+                    <img style="width: 20rem;" src="images/undraw_data_report_bi6l.svg" alt="IMG">
 
                 </div>
 
@@ -40,7 +44,7 @@
 
 
                     <div class="wrap-input100 validate-input" data-validate="Gallons requested">
-                        <input class="input100" type="number" name="gallons" placeholder="Gallons Requested">
+                        <input class="input100" type="number" name="gallons" required placeholder="Gallons Requested">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-address-card" aria-hidden="true"></i>
@@ -49,7 +53,7 @@
 
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="deliveryAdd" placeholder="Delivery Address">
+                        <input class="input100" type="text" name="deliveryAdd" required placeholder="Delivery Address">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-address-card" aria-hidden="true"></i>
@@ -57,7 +61,7 @@
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="date" name="date" placeholder="Delivery Date">
+                        <input class="input100" type="date" name="date" required placeholder="Delivery Date">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -91,18 +95,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="text-center p-t-10">
-                        <a class="txt2" href="signup.php">
-                            Create your Account
-                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                        </a>
-                        <br>
-                        <a class="txt2" href="index.php">
-                            Already have an account? Log in
-                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                        </a>
                     </div>
 
                 </form>
