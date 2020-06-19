@@ -68,9 +68,9 @@
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <a class="login100-form-btn" href="fuelquote.php" role="button">
+                        <button class="login100-form-btn" href="fuelquote.php" role="link">
                             Generate Quote
-                        </a>
+                        </button>
                     </div>
 
                 </form>
