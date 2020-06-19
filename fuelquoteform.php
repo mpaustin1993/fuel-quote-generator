@@ -46,7 +46,7 @@
                         <input class="input100" type="number" name="gallons" required placeholder="Gallons Requested">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
-                            <i class="fa fa-address-card" aria-hidden="true"></i>
+                            <i class="fa fa-industry" aria-hidden="true"></i>
                         </span>
                     </div>
 
@@ -55,22 +55,22 @@
                         <input class="input100" type="text" name="deliveryAdd" required placeholder="Delivery Address">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
-                            <i class="fa fa-address-card" aria-hidden="true"></i>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
                         </span>
                     </div>
 
                     <div class="wrap-input100 validate-input">
-                        <input class="input100" type="date" name="date" required placeholder="Delivery Date">
+                        <input class="input100" placeholder="Delivery Date" type="date" name="date" value="Delivery Date" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
                         </span>
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" href="fuelquote.php" role="link">
+                        <a class="login100-form-btn" href="fuelquote.php" role="button">
                             Generate Quote
-                        </button>
+                        </a>
                     </div>
 
                 </form>
