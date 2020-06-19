@@ -37,15 +37,7 @@
 						Member Login
 					</span>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-=======
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
->>>>>>> f0d17705db0ec4e4b9222cf25d80cd53af01bd20
-=======
-					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
->>>>>>> 280122def866eada453f6582fd785e3d8b71a8c7
 						<input class="input100" type="text" name="email" required placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -54,16 +46,7 @@
 					</div>
 
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
-=======
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
->>>>>>> f0d17705db0ec4e4b9222cf25d80cd53af01bd20
-=======
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
->>>>>>> 280122def866eada453f6582fd785e3d8b71a8c7
 						<input class="input100" type="password" name="pass" required placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -86,30 +69,17 @@
 						</a>
 					</div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 					<div class="text-center p-t-12">
-=======
-					<div class="text-center p-t-100">
->>>>>>> f0d17705db0ec4e4b9222cf25d80cd53af01bd20
-=======
-					<div class="text-center p-t-12">
->>>>>>> 280122def866eada453f6582fd785e3d8b71a8c7
+
 						<a class="txt2" href="signup.php">
 							Create your Account
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
 					<div class="text-center p-t-10">
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 						<a class="txt2" href="fuelquoteform.php">
-=======
-						<a class="txt2" href="fuelquote.php">
->>>>>>> f0d17705db0ec4e4b9222cf25d80cd53af01bd20
-=======
-						<a class="txt2" href="fuelquoteform.php">
->>>>>>> 280122def866eada453f6582fd785e3d8b71a8c7
 							Demo User
 							<!-- <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> -->
 						</a>
