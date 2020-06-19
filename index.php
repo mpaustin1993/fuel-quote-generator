@@ -92,7 +92,7 @@
 						<a class="txt2" href="fuelquote.php">
 
 						<a class="txt2" href="fuelquoteform.php">
-
+							DEMO user
 							<!-- <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> -->
 						</a>
 					</div>
