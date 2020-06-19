@@ -176,7 +176,7 @@ iframe {
 }
 
 .wrap-login100 {
-  width: 960px;
+  width: 100%;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
@@ -194,7 +194,7 @@ iframe {
 /*------------------------------------------------------------------
 [  ]*/
 .login100-pic {
-  width: 400px;
+  width: 316px;
 }
 
 .login100-pic img {

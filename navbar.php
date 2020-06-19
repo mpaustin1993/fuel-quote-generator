@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" href="login.php"> <img class="buglogo" src="img/white-bugLogo.png" alt=""></a>
+  <a class="navbar-brand" href="fuelquoteform.php"> <img class="quotelogo" src="images/LogoYellowBackground.png" alt=""></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="nav navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="fuelquoteform.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="fuelquoteform.php">Home</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,7 +44,3 @@
 
   </div>
 </nav>
-<<<<<<< HEAD
-</nav>
-=======
->>>>>>> 899ccb72e43d8318a126535ba771fa222039196d
