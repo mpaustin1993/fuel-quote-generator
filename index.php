@@ -37,7 +37,11 @@
 						Member Login
 					</span>
 
+<<<<<<< HEAD
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+=======
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+>>>>>>> f0d17705db0ec4e4b9222cf25d80cd53af01bd20
 						<input class="input100" type="text" name="email" required placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -47,7 +51,11 @@
 
 
 
+<<<<<<< HEAD
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
+=======
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+>>>>>>> f0d17705db0ec4e4b9222cf25d80cd53af01bd20
 						<input class="input100" type="password" name="pass" required placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -70,14 +78,22 @@
 						</a>
 					</div>
 
+<<<<<<< HEAD
 					<div class="text-center p-t-12">
+=======
+					<div class="text-center p-t-100">
+>>>>>>> f0d17705db0ec4e4b9222cf25d80cd53af01bd20
 						<a class="txt2" href="signup.php">
 							Create your Account
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
 					<div class="text-center p-t-10">
+<<<<<<< HEAD
 						<a class="txt2" href="fuelquoteform.php">
+=======
+						<a class="txt2" href="fuelquote.php">
+>>>>>>> f0d17705db0ec4e4b9222cf25d80cd53af01bd20
 							Demo User
 							<!-- <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> -->
 						</a>
