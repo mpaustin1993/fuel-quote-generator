@@ -38,8 +38,6 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email" required placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -47,12 +45,8 @@
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
-
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
 
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
-
 						<input class="input100" type="password" name="pass" required placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -75,11 +69,9 @@
 						</a>
 					</div>
 
-					<div class="text-center p-t-12">
-
-					<div class="text-center p-t-100">
 
 					<div class="text-center p-t-12">
+
 						<a class="txt2" href="signup.php">
 							Create your Account
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
@@ -88,11 +80,7 @@
 					<div class="text-center p-t-10">
 
 						<a class="txt2" href="fuelquoteform.php">
-
-						<a class="txt2" href="fuelquote.php">
-
-						<a class="txt2" href="fuelquoteform.php">
-							DEMO user
+							Demo User
 							<!-- <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> -->
 						</a>
 					</div>
