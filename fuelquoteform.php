@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="wrap-input100 validate-input">
-                        <input class="input100" placeholder="Delivery Date" type="date" name="date" value="Delivery Date" required>
+                        <input class="input100" type="text" name="deliveryDate" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Delivery Date" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -68,8 +68,14 @@
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <a class="login100-form-btn" href="fuelquote.php" role="button">
+                        <button class="login100-form-btn">
                             Generate Quote
+                        </button>
+                    </div>
+                    <div class="text-center p-t-12">
+                        <a class="txt2" href="fuelquote.php">
+                            Demo Quote
+                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                         </a>
                     </div>
 
