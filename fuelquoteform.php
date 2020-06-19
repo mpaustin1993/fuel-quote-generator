@@ -5,7 +5,6 @@
     <title>Fuel Quote</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/extra.css">
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
     <!--===============================================================================================-->
@@ -22,21 +21,7 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/override.css">
     <!--===============================================================================================-->
-
-    <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-
-
 </head>
-
-<script>
-  // Call the dataTables jQuery plugin
-  $(document).ready(function() {
-    $('#table_id').DataTable();
-  });
-</script>
 
 <body>
 
@@ -46,85 +31,56 @@
 
     <div class="limiter">
         <div class="container-login100">
-
-          <div class="wrap-container">
-            <div class="row">
-              <div class="col-lg-6">
-                <span class="login100-form-title">
-                    Quote History
-                </span>
-                <table class="table table-bordered display" id="table_id" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Quote</th>
-                      <th>Date</th>
-                      <th>Details</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td>A</td>
-                      <td>B</td>
-                      <td>C</td>
-                      <td><a href="#">Detail</a></td>
-
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div class="col-lg-6">
-                <form class="login120-form validate-form">
-                    <span class="login100-form-title">
-                        Fuel Quote
-                    </span>
-
-                    <h6>Suggested Price / Gallon:</h6>
-                    <p>$  / gallon</p>
-                    <br>
-                    <h6>Total Amount Due:</h6>
-                    <p>$ </p>
-
-                    <div class="container-login100-form-btn">
-                        <a class="login100-form-btn" href="fuelquoteform.php" role="button">
-                            Get New Quote
-                        </a>
-                    </div>
-
-                </form>
-              </div>
-
-            </div>
-          </div>
-
-            <!-- <div class="wrap-login100">
-
+            <div class="wrap-login100">
                 <div class="login100-pic js-tilt" data-tilt>
                     <img style="width: 20rem;" src="images/undraw_data_report_bi6l.svg" alt="IMG">
-
                 </div>
 
                 <form class="login100-form validate-form">
                     <span class="login100-form-title">
-                        Fuel Quote
+                        Fuel Quote Form
                     </span>
 
-                    <h6>Suggested Price / Gallon:</h6>
-                    <p>$  / gallon</p>
-                    <br>
-                    <h6>Total Amount Due:</h6>
-                    <p>$ </p>
 
-                    <div class="container-login100-form-btn">
-                        <a class="login100-form-btn" href="fuelquoteform.php" role="button">
-                            Get New Quote
-                        </a>
+                    <div class="wrap-input100 validate-input" data-validate="Gallons requested">
+                        <input class="input100" type="number" name="gallons" required placeholder="Gallons Requested">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-address-card" aria-hidden="true"></i>
+                        </span>
                     </div>
 
+
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="text" name="deliveryAdd" required placeholder="Delivery Address">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-address-card" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="date" name="date" required placeholder="Delivery Date">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" >
+                            Generate Quote
+                        </button>
+                    </div>
+                    <div class="text-center p-t-12">
+          						<a class="txt2" href="fuelquote.php">
+          							Demo Quote
+          							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+          						</a>
+          					</div>
+
                 </form>
-            </div> -->
+            </div>
         </div>
     </div>
 
@@ -145,10 +101,6 @@
     </script>
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
-
-    <!-- Page level plugins For Datatables.net -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 </body>
 
