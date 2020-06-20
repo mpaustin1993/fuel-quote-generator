@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>Login</title>
+    <title>Profile Manager</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/override.css">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <link rel="icon" type="image/png" href="images/LogoNoBackground.png"/>
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -19,25 +20,105 @@
     <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/overmain.css">
     <!--===============================================================================================-->
 </head>
 
-<?php
-    include 'navbar.php';
-    ?>
+
 
 <body>
+    <div class="container">
+      <?php
+      include 'navbar.php';
+      ?>
+      <div class="limiter">
+              <div class="wrap-login100">
+                  <div class="login100-pic js-tilt" data-tilt>
+                      <img style="width: 30rem;" src="images/undraw_profile_6l1l.svg" alt="IMG">
 
-    <div class="limiter">
-        <div class="container-login100">
-            <div class="wrap-login100">
+                  </div>
 
-                <h1>Profile Manager Will Go Here</h1>
+                  <form class="login100-form validate-form">
+                      <span class="login100-form-title">
+                          Manage Profile
+                      </span>
 
-            </div>
-        </div>
+                      <div class="wrap-input100">
+                          <input class=" input100" type="text" name="username" placeholder="demouser">
+                          <span class="focus-input100"></span>
+                          <span class="symbol-input100">
+                              <i class="fa fa-user" aria-hidden="true"></i>
+                          </span>
+                      </div>
+
+                      <div class="wrap-input100">
+                          <input class=" input100" type="text" name="email" placeholder="demouser@fuel.com">
+                          <span class="focus-input100"></span>
+                          <span class="symbol-input100">
+                              <i class="fa fa-envelope" aria-hidden="true"></i>
+                          </span>
+                      </div>
+
+                      <div class="wrap-input100">
+                          <input class=" input100" type="text" name="firstname" placeholder="Demo">
+                          <span class="focus-input100"></span>
+                          <span class="symbol-input100">
+                              <i class="fa fa-address-card" aria-hidden="true"></i>
+                          </span>
+                      </div>
+
+                      <div class="wrap-input100">
+                          <input class=" input100" type="text" name="lastname" placeholder="User">
+                          <span class="focus-input100"></span>
+                          <span class="symbol-input100">
+                              <i class="fa fa-address-card" aria-hidden="true"></i>
+                          </span>
+                      </div>
+
+                      <div class="wrap-input100">
+                          <input class=" input100" type="text" name="address1" placeholder="7777 Demo St.">
+                          <span class="focus-input100"></span>
+                          <span class="symbol-input100">
+                              <i class="fa fa-map-marker" aria-hidden="true"></i>
+                          </span>
+                      </div>
+
+                      <div class="wrap-input100">
+                          <input class=" input100" type="text" name="address2" placeholder="Apt #4">
+                          <span class="focus-input100"></span>
+                          <span class="symbol-input100">
+                              <i class="fa fa-map-marker" aria-hidden="true"></i>
+                          </span>
+                      </div>
+
+                      <div class="wrap-input100">
+                          <input class=" input100" type="text" name="city" placeholder="Houston">
+                          <span class="focus-input100"></span>
+                          <span class="symbol-input100">
+                              <i class="fa fa-map-signs" aria-hidden="true"></i>
+                          </span>
+                      </div>
+
+                      <div class="wrap-input100">
+                          <select class=" input100" type="text" name="state" placeholder="State">
+                              <option value="TX">TX</option>
+                              <option value="AZ">AZ</option>
+                              <option value="MS">MS</option>
+                              <option value="TE">TE</option>
+                          </select>
+
+                      </div>
+
+                      <div class="container-login100-form-btn">
+                          <button class="login100-form-btn">
+                              Edit Profile
+                          </button>
+                      </div>
+                  </form>
+              </div>
+      </div>
     </div>
+
 
 
 
