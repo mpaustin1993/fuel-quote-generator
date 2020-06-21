@@ -63,13 +63,28 @@
 
               <tbody>
                 <tr>
-                  <td>20</td>
+                  <td>37</td>
                   <td>10/20/20</td>
                   <td>100</td>
                   <td>$3.40/Gal</td>
                   <td>$340</td>
                   <!-- <td><strong><a href="#"></a></strong></td> -->
+                </tr>
 
+                <tr>
+                  <td>20</td>
+                  <td>09/27/20</td>
+                  <td>200</td>
+                  <td>$2.70/Gal</td>
+                  <td>$540</td>
+                </tr>
+
+                <tr>
+                  <td>12</td>
+                  <td>06/16/20</td>
+                  <td>1000</td>
+                  <td>$2.59/Gal</td>
+                  <td>$2,590</td>
                 </tr>
               </tbody>
             </table>
@@ -83,19 +98,35 @@
               <div class="row">
                 <div class="col-sm-6">
                   <h6>Suggested Price / Gallon:</h6>
-                  <p>$ / gallon</p>
+                  <p>$1.79 / gallon</p>
                   <br>
                 </div>
                 <div class="col-sm-6">
                   <h6>Number of Gallon(s):</h6>
-                  <p>gallon(s)</p>
+                  <p>1000 gallon(s)</p>
                   <br>
                 </div>
 
               </div>
 
+              <div class="row">
+                <div class="col-sm-6">
+                  <h6>Subtotal:</h6>
+                  <p>$1,790 / gallon</p>
+                  <br>
+                </div>
+                <div class="col-sm-6">
+                  <h6>Taxes(8.25%):</h6>
+                  <p>$147.68</p>
+                  <br>
+                </div>
+
+              </div>
+
+
+
               <h6>Total Amount Due:</h6>
-              <p>$ </p>
+              <h4>$1,937.68 </h4>
 
               <div class="container-login100-form-btn">
                 <a class="login100-form-btn" href="fuelquoteform.php" role="button">
