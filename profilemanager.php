@@ -40,11 +40,11 @@
 
                 <form class="login100-form validate-form">
                     <span class="login100-form-title">
-                        Manage Profile
+                        Your Profile
                     </span>
 
                     <div class="wrap-input100">
-                        <input class=" input100" type="text" name="username" placeholder="demouser">
+                        <input class="input100" type="text" name="username" placeholder=<?php echo $_SESSION['username'] ?>>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-user" aria-hidden="true"></i>
@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="wrap-input100">
-                        <input class=" input100" type="text" name="email" placeholder="demouser@fuel.com">
+                        <input class="input100" type="text" name="email" placeholder=<?php echo $_SESSION['email'] ?>>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="wrap-input100">
-                        <input class=" input100" type="text" name="firstname" placeholder="Demo">
+                        <input class="input100" type="text" name="name" placeholder="Full Name">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-address-card" aria-hidden="true"></i>
@@ -68,15 +68,7 @@
                     </div>
 
                     <div class="wrap-input100">
-                        <input class=" input100" type="text" name="lastname" placeholder="User">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-address-card" aria-hidden="true"></i>
-                        </span>
-                    </div>
-
-                    <div class="wrap-input100">
-                        <input class=" input100" type="text" name="address1" placeholder="7777 Demo St.">
+                        <input class="input100" type="text" name="address1" placeholder="Address">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -84,7 +76,7 @@
                     </div>
 
                     <div class="wrap-input100">
-                        <input class=" input100" type="text" name="address2" placeholder="Apt #4">
+                        <input class="input100" type="text" name="address2" placeholder="Apt. #">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -92,7 +84,7 @@
                     </div>
 
                     <div class="wrap-input100">
-                        <input class=" input100" type="text" name="city" placeholder="Houston">
+                        <input class="input100" type="text" name="city" placeholder="City">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-map-signs" aria-hidden="true"></i>
@@ -100,17 +92,21 @@
                     </div>
 
                     <div class="wrap-input100">
-                        <select class=" input100" type="text" name="state" placeholder="State">
+                        <select class="input100" type="text" name="state">
+                            <option value="" hidden>State</option>
                             <option value="TX">TX</option>
                             <option value="AZ">AZ</option>
                             <option value="MS">MS</option>
                             <option value="TE">TE</option>
                         </select>
+                        <span class="symbol-input100">
+                            <i class="fa fa-map" aria-hidden="true"></i>
+                        </span>
 
                     </div>
 
                     <div class="wrap-input100">
-                        <input class=" input100" type="text" name="zip" placeholder="77777">
+                        <input class="input100" type="text" name="zip" placeholder="Zip Code">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
