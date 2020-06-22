@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="images/LogoNoBackground.png"/>
+	<link rel="icon" type="image/png" href="images/LogoNoBackground.png" />
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<!--===============================================================================================-->
@@ -32,13 +32,48 @@
 					<img style="width: 25rem;" src="images/signin_undraw.svg" alt="">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="includes/login.inc.php" method="POST">
 					<span class="login100-form-title">
 						Member Login
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" required placeholder="Email">
+					<?php
+					if (isset($_GET['error'])) { //when we have something equal to something in URL, use _GET method
+						if ($_GET['error'] == "emptyfields") {
+							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							  <span aria-hidden="true">&times;</span>
+							</button>
+							Please fill in all fields.							
+						  </div>';
+						} elseif ($_GET['error'] == 'wrongpwd') {
+							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							  <span aria-hidden="true">&times;</span>
+							</button>
+							Incorrect password.							
+						  </div>';
+						} elseif ($_GET['error'] == 'nouser') {
+							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							  <span aria-hidden="true">&times;</span>
+							</button>
+							That username is not recognized.							
+						  </div>';
+						} elseif ($_GET['error'] == 'sqlerror') {
+							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							  <span aria-hidden="true">&times;</span>
+							</button>
+							Database error.				
+						  </div>';
+						}
+					}
+
+					?>
+
+					<div class="wrap-input100" data-validate="Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -46,8 +81,8 @@
 					</div>
 
 
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass" required placeholder="Password">
+					<div class="wrap-input100" data-validate="Password is required">
+						<input class="input100" type="password" name="pass" placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -55,8 +90,8 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
+						<button class="login100-form-btn" type="submit" name="login-submit">
+							Log In
 						</button>
 					</div>
 

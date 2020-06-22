@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +11,7 @@
     <!-- For overriding small elements -->
     <link rel="stylesheet" type="text/css" href="css/override.css">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="images/LogoNoBackground.png"/>
+    <link rel="icon" type="image/png" href="images/LogoNoBackground.png" />
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -29,64 +31,63 @@
 <body>
 
     <div class="container">
-      <?php
-      include 'navbar.php';
-      ?>
+        <?php
+        include 'navbar.php';
+        ?>
 
-      <div class="limiter">
+        <div class="limiter">
 
-              <div class="wrap-login100">
-                  <div class="login100-pic js-tilt" data-tilt>
-                      <img style="width: 20rem;" src="images/undraw_data_report_bi6l.svg" alt="IMG">
-                  </div>
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img style="width: 20rem;" src="images/undraw_data_report_bi6l.svg" alt="IMG">
+                </div>
 
-                  <form class="login100-form validate-form">
-                      <span class="login100-form-title">
-                          Fuel Quote Form
-                      </span>
+                <form class="login100-form validate-form">
+                    <span class="login100-form-title">
+                        Fuel Quote Form
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Gallons requested">
+                        <input class="input100" type="number" name="gallons" required placeholder="Gallons Requested">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-industry" aria-hidden="true"></i>
+                        </span>
+                    </div>
 
 
-                      <div class="wrap-input100 validate-input" data-validate="Gallons requested">
-                          <input class="input100" type="number" name="gallons" required placeholder="Gallons Requested">
-                          <span class="focus-input100"></span>
-                          <span class="symbol-input100">
-                              <i class="fa fa-industry" aria-hidden="true"></i>
-                          </span>
-                      </div>
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="text" name="deliveryAdd" required placeholder="Delivery Address">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </span>
+                    </div>
 
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="text" name="deliveryDate" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Delivery Date" required>
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </span>
+                    </div>
 
-                      <div class="wrap-input100 validate-input">
-                          <input class="input100" type="text" name="deliveryAdd" required placeholder="Delivery Address">
-                          <span class="focus-input100"></span>
-                          <span class="symbol-input100">
-                              <i class="fa fa-map-marker" aria-hidden="true"></i>
-                          </span>
-                      </div>
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Generate Quote
+                        </button>
+                    </div>
+                    <div class="text-center p-t-12">
+                        <a class="txt2" href="fuelquote.php">
+                            Demo Quote
+                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a>
+                    </div>
 
-                      <div class="wrap-input100 validate-input">
-                          <input class="input100" type="text" name="deliveryDate" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Delivery Date" required>
-                          <span class="focus-input100"></span>
-                          <span class="symbol-input100">
-                              <i class="fa fa-calendar" aria-hidden="true"></i>
-                          </span>
-                      </div>
+                </form>
+            </div>
 
-                      <div class="container-login100-form-btn">
-                          <button class="login100-form-btn">
-                              Generate Quote
-                          </button>
-                      </div>
-                      <div class="text-center p-t-12">
-                          <a class="txt2" href="fuelquote.php">
-                              Demo Quote
-                              <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                          </a>
-                      </div>
-
-                  </form>
-              </div>
-
-      </div>
+        </div>
     </div>
 
 

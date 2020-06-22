@@ -45,6 +45,7 @@ class UserCredentials extends Dbh
 
   protected function userLogin($mailUser, $userPwd)
   {
+
     $sql = "SELECT * FROM userCredentials WHERE userName = ? OR userEmail = ?;";
     $stmt = $this->connect()->prepare($sql);
     if (!$stmt) {
@@ -61,11 +62,12 @@ class UserCredentials extends Dbh
           exit();
         } elseif ($pwdCheck == true) {
           session_start();
-          $_SESSION['userSessID'] = $row['userId'];
-          $_SESSION['userSessName'] = $row['userName'];
-          $_SESSION['userSessEmail'] = $row['userEmail'];
 
-          header("Location: ../dashboard.php?login=success");
+          $_SESSION['id'] = $row['userId'];
+          $_SESSION['username'] = $row['userName'];
+          $_SESSION['email'] = $row['userEmail'];
+
+          header("Location: ../profilemanager.php?login=success");
           exit();
         } else {
           header("Location: ../index.php?error=wrongpwd");
