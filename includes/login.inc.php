@@ -7,8 +7,6 @@ if (isset($_POST['login-submit'])) {
   $mailUser = $_POST['email'];
   $password = $_POST['pass'];
 
-  // echo $mailUser, $password;
-
   $userObj = new UserCredentialsControl();
   $userObj->userLoginInput($mailUser, $password);
 }
