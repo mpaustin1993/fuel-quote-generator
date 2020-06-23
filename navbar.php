@@ -14,7 +14,7 @@ session_start();
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?php echo $_SESSION['username']  ?>          
+          <?php echo $_SESSION['username']  ?>
           <!-- Drop down -->
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -33,7 +33,7 @@ session_start();
             Password</a>
           <!--<img class="icon" src="img/password-icon.png"> -->
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="index.php">
+          <a class="dropdown-item" href="includes/logout.inc.php">
             <svg class="bi bi-box-arrow-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M11.646 11.354a.5.5 0 010-.708L14.293 8l-2.647-2.646a.5.5 0 01.708-.708l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708 0z" clip-rule="evenodd" />
               <path fill-rule="evenodd" d="M4.5 8a.5.5 0 01.5-.5h9a.5.5 0 010 1H5a.5.5 0 01-.5-.5z" clip-rule="evenodd" />
