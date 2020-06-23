@@ -4,10 +4,8 @@ class UserCredentialsControl extends UserCredentials
 {
 
   //Properties
-
   public function validateUserInput($userEmail, $userName, $userPassword, $confirmPassword)
   {
-
     if (empty($userEmail) || empty($userName) || empty($userPassword) || empty($confirmPassword)) {
       header("Location: ../signup.php?error=emptyfield&uid=" . $userName . "&mail=" . $userEmail);
       exit();
@@ -37,6 +35,10 @@ class UserCredentialsControl extends UserCredentials
       $this->userLogin($mailUser, $userPassword);
     }
   } //end of userLoginInput
+
+  public function demoUserLoginInput($demoUsername){
+    $this->demoUserLogin($demoUsername);
+  }
 
   // public function userResetPwdInput($userEmail)
   // {

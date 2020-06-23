@@ -80,6 +80,32 @@ class UserCredentials extends Dbh
     }
   } //End of userLogin
 
+  protected function demoUserLogin($demoUsername){
+    $sql = "SELECT * FROM userCredentials WHERE userName = ?;";
+
+    $stmt = $this->connect()->prepare($sql);
+    if (!$stmt) {
+      header("Location: ../index.php?error=sqlError");
+      exit();
+    }
+    else {
+      $stmt->execute([$demoUsername]);
+      if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        session_start();
+        $_SESSION['id'] = $row['userId'];
+        $_SESSION['username'] = $row['userName'];
+        $_SESSION['email'] = $row['userEmail'];
+
+        header("Location: ../fuelquoteform.php?login=demo");
+        exit();
+      }
+      else {
+        header("Location: ../index.php?error=nouser");
+        exit();
+      }
+    }
+  }
+
   protected function userCredentialsData()
   {
     $sql = "SELECT * FROM userCredentials;";
@@ -90,7 +116,7 @@ class UserCredentials extends Dbh
       $userCredentialsData .=
         "<tr>
         <td>" . $row['userId'] . "</td>"
-        . "<td>" . $row['userEmail'] . "</td>        
+        . "<td>" . $row['userEmail'] . "</td>
       </tr>";
     }
     return $userCredentialsData;

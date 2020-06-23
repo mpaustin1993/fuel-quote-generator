@@ -11,7 +11,18 @@ if (isset($_POST['login-submit'])) {
 
   $userObj = new UserCredentialsControl();
   $userObj->userLoginInput($mailUser, $password);
-} else {
+}
+
+elseif (isset($_POST['demo-login'])) {
+
+  $demoUsername = $_POST['demousername'];
+
+  $userObj = new UserCredentialsControl();
+  $userObj->demoUserLoginInput($demoUsername);
+}
+
+
+else {
   header("Location: ../index.php");
   exit();
 }

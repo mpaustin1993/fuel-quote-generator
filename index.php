@@ -44,28 +44,28 @@
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							  <span aria-hidden="true">&times;</span>
 							</button>
-							Please fill in all fields.							
+							Please fill in all fields.
 						  </div>';
 						} elseif ($_GET['error'] == 'wrongpwd') {
 							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							  <span aria-hidden="true">&times;</span>
 							</button>
-							Incorrect password.							
+							Incorrect password.
 						  </div>';
 						} elseif ($_GET['error'] == 'nouser') {
 							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							  <span aria-hidden="true">&times;</span>
 							</button>
-							That username is not recognized.							
+							That username is not recognized.
 						  </div>';
 						} elseif ($_GET['error'] == 'sqlerror') {
 							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							  <span aria-hidden="true">&times;</span>
 							</button>
-							Database error.				
+							Database error.
 						  </div>';
 						}
 					}
@@ -112,15 +112,27 @@
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
-					<div class="text-center p-t-10">
+					<!-- <div class="text-center p-t-10">
 
 						<a class="txt2" href="fuelquoteform.php">
 							Demo User
-							<!-- <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> -->
 						</a>
-					</div>
+
+					</div> -->
 				</form>
+
+
+				<form class="login100-form" action="includes/login.inc.php" method="POST">
+					<input type="hidden" name="demousername" value="demoUser">
+					<button class="login100-form-btn" type="submit" name="demo-login">
+						Demo User
+					</button>
+				</form>
+
+
 			</div>
+
+
 		</div>
 	</div>
 
