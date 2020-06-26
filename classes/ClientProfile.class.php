@@ -13,34 +13,31 @@ class clientProfile extends Dbh
 
   protected function createNewClient($clientUserId, $clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip)
   {
-    $sql = "SELECT clientUserId FROM clientProfile WHERE clientUserId=?"; // ? is a placeholder
 
+    // echo $clientUserId . " " . $clientName;
+
+    $sql = "INSERT INTO clientProfile (clientUserId, clientName, clientAddress1, clientAddress2, clientCity, clientState, clientZip) VALUES ($clientUserId, $clientName, 'Cool', 'COOL', 'Houston', 'TX', 77005);";
     $stmt = $this->connect()->prepare($sql);
     if (!$stmt) {
-      header("Location: ../profilemanager.php?error=sqlError");
+      header("Location: ../profilemanager.php?error=sqlerror");
       exit();
     } else {
-      $stmt->execute([$clientUserId]);
-      $resultCheck = $stmt->fetchColumn();
-
-      if ($resultCheck == true) {
-        header("Location: ../profilemanager.php?error=clientAlreadyCreated=" . $clientName);
-        exit();
-      } else {
-        $sql = "INSERT INTO clientProfile (clientUserId, clientName, clientAddress1, clientAddress2, clientCity, clientState, clientZip) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $this->connect()->prepare($sql);
-        if (!$stmt) {
-          header("Location: ../profilemanager.php?error=sqlError");
-          exit();
-        } else {
-          $stmt->execute([$clientUserId, $clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip]);
-          header("Location: ../profilemanager.php?signup=success");
-          exit();
-        }
-        $this->connect()->null;
-      }
+      $stmt->execute();
+      header("Location: ../profilemanager.php?&clientName=$clientName");
+      // exit();
     }
-  } //End of validateUserCreate
+    // $this->connect()->null;
+
+    // if (!$stmt) {
+    //   header("Location: ../profilemanager.php?error=sqlerror");
+    //   exit();
+    // } else {
+    //   $stmt->execute([$clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip]);
+    //   header("Location: ../profilemanager.php?submission=success");
+    //   exit();
+    // }
+    // $this->connect()->null;
+  }
 
   protected function clientProfileData()
   {
@@ -51,8 +48,13 @@ class clientProfile extends Dbh
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
       $clientProfileData .=
         "<tr>
-        <td>" . $row['userId'] . "</td>"
-        . "<td>" . $row['userEmail'] . "</td>
+        <td>" . $row['clientUserId'] . "</td>"
+        . "<td>" . $row['clientName'] . "</td>"
+        . "<td>" . $row['clientAddress1'] . "</td>"
+        . "<td>" . $row['clientAddress2'] . "</td>"
+        . "<td>" . $row['clientCity'] . "</td>"
+        . "<td>" . $row['clientState'] . "</td>"
+        . "<td>" . $row['clientZip'] . "</td>        
       </tr>";
     }
     return $clientProfileData;
