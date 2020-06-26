@@ -11,10 +11,8 @@ require 'PHPMailer/vendor/autoload.php';
 class clientProfile extends Dbh
 {
 
-  protected function createNewClient($clientUserId, $clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip)
+  protected function updateProfile($clientUserId, $clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip)
   {
-
-    // echo $clientUserId . " " . $clientName;
 
     $sql = "INSERT INTO clientProfile (clientUserId, clientName, clientAddress1, clientAddress2, clientCity, clientState, clientZip) VALUES (?, ?, ?, ?, ?, ?, ?);";
     $stmt = $this->connect()->prepare($sql);
@@ -24,7 +22,7 @@ class clientProfile extends Dbh
       exit();
     } else {
       $stmt->execute([$clientUserId, $clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip]);
-      header("Location: ../profilemanager.php?submission=success");
+      header("Location: ../profilemanager.php?&editprofile=success");
       exit();
     }
     $this->connect()->null;
@@ -45,7 +43,7 @@ class clientProfile extends Dbh
         . "<td>" . $row['clientAddress2'] . "</td>"
         . "<td>" . $row['clientCity'] . "</td>"
         . "<td>" . $row['clientState'] . "</td>"
-        . "<td>" . $row['clientZip'] . "</td>        
+        . "<td>" . $row['clientZip'] . "</td>
       </tr>";
     }
     return $clientProfileData;

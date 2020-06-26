@@ -44,7 +44,7 @@
                     </span>
 
                     <div class="wrap-input100">
-                        <input class="input100" type="text" name="username" placeholder=<?php echo $_SESSION['username'] ?>>
+                        <input class="input100" type="text" name="username" value=<?php echo $_SESSION['username'] ?>>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-user" aria-hidden="true"></i>
@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="wrap-input100">
-                        <input class="input100" type="text" name="email" placeholder=<?php echo $_SESSION['email'] ?>>
+                        <input class="input100" type="text" name="email" value=<?php echo $_SESSION['email'] ?>>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>

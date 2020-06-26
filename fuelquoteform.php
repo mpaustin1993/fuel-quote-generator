@@ -32,7 +32,7 @@
 
     <div class="container">
         <?php
-        
+
         include 'navbar.php';
         ?>
 
@@ -43,10 +43,12 @@
                     <img style="width: 20rem;" src="images/undraw_data_report_bi6l.svg" alt="IMG">
                 </div>
 
-                <form class="login100-form validate-form">
+                <form action="includes/fuelquote.inc.php" class="login100-form validate-form" method="POST">
                     <span class="login100-form-title">
                         Fuel Quote Form
                     </span>
+
+                    <input type="hidden" name="clientid" value="<?php echo $_SESSION['id']; ?>">
 
                     <div class="wrap-input100 validate-input" data-validate="Gallons requested">
                         <input class="input100" type="number" name="gallons" required placeholder="Gallons Requested">
@@ -58,7 +60,36 @@
 
 
                     <div class="wrap-input100 validate-input">
-                        <input class="input100" type="text" name="deliveryAdd" required placeholder="Delivery Address">
+                        <input class="input100" type="text" name="deliveryAdr" required placeholder="Delivery Address">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="text" name="deliveryCity" required placeholder="City">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100">
+                        <select class="input100" type="text" name="state">
+                            <option value="" hidden>State</option>
+                            <option value="TX">TX</option>
+                            <option value="AZ">AZ</option>
+                            <option value="MS">MS</option>
+                            <option value="TE">TE</option>
+                        </select>
+                        <span class="symbol-input100">
+                            <i class="fa fa-map" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="zip" name="zipcode" required placeholder="Zipcode">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -74,7 +105,7 @@
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">
+                        <button type="submit" name="quote-input"class="login100-form-btn">
                             Generate Quote
                         </button>
                     </div>
