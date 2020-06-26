@@ -16,27 +16,18 @@ class clientProfile extends Dbh
 
     // echo $clientUserId . " " . $clientName;
 
-    $sql = "INSERT INTO clientProfile (clientUserId, clientName, clientAddress1, clientAddress2, clientCity, clientState, clientZip) VALUES ($clientUserId, $clientName, 'Cool', 'COOL', 'Houston', 'TX', 77005);";
+    $sql = "INSERT INTO clientProfile (clientUserId, clientName, clientAddress1, clientAddress2, clientCity, clientState, clientZip) VALUES (?, ?, ?, ?, ?, ?, ?);";
     $stmt = $this->connect()->prepare($sql);
+
     if (!$stmt) {
       header("Location: ../profilemanager.php?error=sqlerror");
       exit();
     } else {
-      $stmt->execute();
-      header("Location: ../profilemanager.php?&clientName=$clientName");
-      // exit();
+      $stmt->execute([$clientUserId, $clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip]);
+      header("Location: ../profilemanager.php?submission=success");
+      exit();
     }
-    // $this->connect()->null;
-
-    // if (!$stmt) {
-    //   header("Location: ../profilemanager.php?error=sqlerror");
-    //   exit();
-    // } else {
-    //   $stmt->execute([$clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip]);
-    //   header("Location: ../profilemanager.php?submission=success");
-    //   exit();
-    // }
-    // $this->connect()->null;
+    $this->connect()->null;
   }
 
   protected function clientProfileData()
