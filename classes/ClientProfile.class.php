@@ -11,18 +11,16 @@ require 'PHPMailer/vendor/autoload.php';
 class clientProfile extends Dbh
 {
 
-  protected function createNewClient($clientUserId, $clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip)
+  protected function updateProfile($clientUserId, $clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip)
   {
 
-    // echo $clientUserId . " " . $clientName;
-
-    $sql = "INSERT INTO clientProfile (clientUserId, clientName, clientAddress1, clientAddress2, clientCity, clientState, clientZip) VALUES ($clientUserId, $clientName, 'Cool', 'COOL', 'Houston', 'TX', 77005);";
+    $sql = "INSERT INTO clientProfile (clientUserId, clientName, clientAddress1, clientAddress2, clientCity, clientState, clientZip) VALUES (?, ?, ?, ?, ?, ?, ?);";
     $stmt = $this->connect()->prepare($sql);
     if (!$stmt) {
       header("Location: ../profilemanager.php?error=sqlerror");
       exit();
     } else {
-      $stmt->execute();
+      $stmt->execute([$clientUserId, $clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip]);
       header("Location: ../profilemanager.php?&clientName=$clientName");
       // exit();
     }
@@ -54,7 +52,7 @@ class clientProfile extends Dbh
         . "<td>" . $row['clientAddress2'] . "</td>"
         . "<td>" . $row['clientCity'] . "</td>"
         . "<td>" . $row['clientState'] . "</td>"
-        . "<td>" . $row['clientZip'] . "</td>        
+        . "<td>" . $row['clientZip'] . "</td>
       </tr>";
     }
     return $clientProfileData;
