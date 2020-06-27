@@ -104,7 +104,48 @@ class UserCredentials extends Dbh
         exit();
       }
     }
-  }
+  } //End of demoUserLogin
+
+
+  protected function usersPwdUpdate($userId, $currentPwd,$newPwd) {
+
+    $sql = "SELECT * FROM userCredentials WHERE userId = ?;";
+    $stmt = $this->connect()->prepare($sql);
+
+    if (!$stmt) {
+      header("Location: ../passwordmanager.php?error=sqlerror");
+      exit();
+    }
+    else {
+      $stmt->execute([$userId]);
+      if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $pwdCheck = password_verify($currentPwd, $row['userPassword']);
+
+        if ($pwdCheck == false) {
+          header("Location: ../passwordmanager.php?error=notcurrentpwd");
+          exit();
+        }
+        elseif ($pwdCheck == true) {
+          $hashedNewPwd = password_hash($newPwd, PASSWORD_DEFAULT);
+
+          $sql = "UPDATE userCredentials SET userPassword = ?;";
+          $stmt = $this->connect()->prepare($sql);
+          if (!$stmt) {
+            header("Location: ../passwordmanager.php?error=sqlerror");
+            exit();
+          }
+          else {
+            $stmt->execute([$hashedNewPwd]);
+            header("Location: ../passwordmanager.php?newpwdset=success");
+          }
+        }
+        else {
+          header("Location: ../passwordmanager.php?error=nouser");
+        }
+      }
+    }
+
+  }//End of usersPwdUpdate
 
   protected function userCredentialsData()
   {
@@ -120,5 +161,8 @@ class UserCredentials extends Dbh
       </tr>";
     }
     return $userCredentialsData;
-  }
+  }//End of userCredentialsData
+
+
+
 } // end of class

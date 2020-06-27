@@ -40,20 +40,8 @@ class UserCredentialsControl extends UserCredentials
     $this->demoUserLogin($demoUsername);
   }
 
-  // public function userResetPwdInput($userEmail)
-  // {
-
-  //   if (empty($userEmail)) {
-  //     header("Location: ../reset-password.php?error=emptyfield");
-  //     exit();
-  //   } else {
-  //     $this->userResetPwd($userEmail);
-  //   }
-  // } //End of userResetPwdInput
-
-  // public function UserCredentialsRoleAssignInput($UserCredentialselect, $userRole)
-  // {
-  //   $this->UserCredentialsRoleAssign($UserCredentialselect, $userRole);
-  // }
+  public function usersPwdUpdateInput($userId, $currentPwd, $newPwd){
+    $this->usersPwdUpdate($userId, $currentPwd, $newPwd);
+  }
 
 }

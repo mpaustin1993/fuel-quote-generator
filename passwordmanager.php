@@ -1,3 +1,7 @@
+<?php
+  include 'includes/autoloader.inc.php';
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,11 +43,45 @@
                     <img style="width: 30rem;" src="images/undraw_my_password_d6kg.svg" alt="IMG">
                 </div>
 
-                <form class="login100-form validate-form">
+                <form action="includes/passwordmanager.inc.php" class="login100-form validate-form" method="POST">
                     <span class="login100-form-title">
                         Manage Password
                     </span>
 
+                    <?php
+                    if (isset($_GET['error'])) { //when we have something equal to something in URL, use _GET method
+                      if ($_GET['error'] == "emptyfield") {
+                        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        Please fill in all fields.
+                        </div>';
+                      } elseif ($_GET['error'] == 'newpwdnotmatch') {
+                        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        New passwords are not match.
+                        </div>';
+                      } elseif ($_GET['error'] == 'sqlerror') {
+                        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        SQL Error
+                        </div>';
+                      } elseif ($_GET['error'] == 'notcurrentpwd') {
+                        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        The current password is incorrect.
+                        </div>';
+                      } elseif ($_GET['error'] == 'nouser') {
+                        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        Current user is unavailable
+                        </div>';
+                      }
+                    } elseif (isset($_GET['newpwdset'])) {
+                      if ($_GET['newpwdset'] == "success") {
+                        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                        Password has been updated successful!
+                        </div>';
+                      }
+                    }
+
+                     ?>
+
+                    <input type="hidden" name="uid" value="<?php echo $_SESSION['id']; ?>">
                     <div class="wrap-input100 validate-input" data-validate="Current password is required.">
                         <input class="input100" type="password" name="currentpass" placeholder="Enter Current Password">
                         <span class="focus-input100"></span>
@@ -69,7 +107,7 @@
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">
+                        <button type="submit" class="login100-form-btn" name="password-update">
                             Change Password
                         </button>
                     </div>
