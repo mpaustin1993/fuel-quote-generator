@@ -38,7 +38,7 @@
 
                 </div>
 
-                <form class="login100-form validate-form">
+                <form class="login100-form validate-form" action="includes/profilemanager.inc.php" method="POST">
                     <span class="login100-form-title">
                         Your Profile
                     </span>

@@ -41,31 +41,26 @@
 					if (isset($_GET['error'])) { //when we have something equal to something in URL, use _GET method
 						if ($_GET['error'] == "emptyfields") {
 							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							  <span aria-hidden="true">&times;</span>
-							</button>
 							Please fill in all fields.
 						  </div>';
 						} elseif ($_GET['error'] == 'wrongpwd') {
 							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							  <span aria-hidden="true">&times;</span>
-							</button>
 							Incorrect password.
 						  </div>';
 						} elseif ($_GET['error'] == 'nouser') {
 							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							  <span aria-hidden="true">&times;</span>
-							</button>
 							That username is not recognized.
 						  </div>';
 						} elseif ($_GET['error'] == 'sqlerror') {
 							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							  <span aria-hidden="true">&times;</span>
-							</button>
 							Database error.
+						  </div>';
+						}
+					}
+					elseif (isset($_GET['newpwd'])) {
+						if ($_GET['newpwd'] == "passwordupdated") {
+							echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+							Password has been reset!
 						  </div>';
 						}
 					}
@@ -120,7 +115,6 @@
 
 					</div> -->
 				</form>
-
 
 				<form class="login100-form" action="includes/login.inc.php" method="POST">
 					<input type="hidden" name="demousername" value="demoUser">
