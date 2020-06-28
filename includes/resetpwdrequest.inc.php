@@ -16,7 +16,6 @@ if (isset($_POST['resetpwd-submit'])) {
     $userObj->userResetPwdEmail($userEmail);
   }
 
-
 }
 else {
   header("Location: ../forgotpassword.php");

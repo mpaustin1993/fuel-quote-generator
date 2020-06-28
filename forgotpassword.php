@@ -33,20 +33,18 @@
 					<img style="width: 25rem;" src="images/undraw_forgot_password.svg" alt="">
 				</div>
 
-				<form class="login100-form validate-form" method="POST" action="includes/resetpwd-request.inc.php">
+				<form class="login100-form validate-form" method="POST" action="includes/resetpwdrequest.inc.php">
 					<span class="login100-form-title">
 						Forgot Password
 					</span>
 					<?php
-					if (isset($_GET['reset'])) { //when we have something equal to something in URL, use _GET method
-						if ($_GET['reset'] == "success") {
-							echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-							Reset Password Request Sent!
-							</div>';
+						if (isset($_GET['reset'])) { //when we have something equal to something in URL, use _GET method
+							if ($_GET['reset'] == "success") {
+								echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+								Reset Password Request Sent!
+								</div>';
+							}
 						}
-					}
-
-
 					 ?>
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email" placeholder="Email">
