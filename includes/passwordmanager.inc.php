@@ -24,6 +24,27 @@ if (isset($_POST['password-update'])) {
   }
 
 }
+elseif (isset($_POST['createnewpwd'])) {
+
+  $userObj = new UserCredentialsControl();
+
+  $selector = $_POST['selector'];
+  $validator = $_POST['validator'];
+  $password = $_POST['newpwd'];
+  $passwordRepeat = $_POST['confirm-newpwd'];
+
+  if(empty($password) || empty($passwordRepeat)){
+    header("Location: ../create-newpwd.php?newpwd=empty");
+    exit();
+  } elseif ($password != $passwordRepeat) {
+    header("Location: ../create-newpwd.php?newpwd=pwdnotsame");
+    exit();
+  }
+  else {
+    $userObj->userResetPwdInput($selector, $validator, $password);
+  }
+
+}
 else {
   header("Location: ../passwordmanager.php");
 }

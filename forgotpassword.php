@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Login V1</title>
+	<title>Reset Password</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/override.css">
@@ -33,11 +33,21 @@
 					<img style="width: 25rem;" src="images/undraw_forgot_password.svg" alt="">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="POST" action="includes/resetpwd-request.inc.php">
 					<span class="login100-form-title">
 						Forgot Password
 					</span>
+					<?php
+					if (isset($_GET['reset'])) { //when we have something equal to something in URL, use _GET method
+						if ($_GET['reset'] == "success") {
+							echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+							Reset Password Request Sent!
+							</div>';
+						}
+					}
 
+
+					 ?>
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
@@ -47,7 +57,7 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button type="submit" name="resetpwd-submit" class="login100-form-btn">
 							Reset Password
 						</button>
 					</div>

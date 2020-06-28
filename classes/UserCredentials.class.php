@@ -147,6 +147,161 @@ class UserCredentials extends Dbh
 
   }//End of usersPwdUpdate
 
+  protected function userResetPwdEmail($userEmail){
+
+    //Create selector and token for validation
+    $selector = bin2hex(random_bytes(8));
+    $token = random_bytes(32); //longer to be secure
+
+    //A token is not allow to be available infinitely
+    //This will give the user a limited time to use for securing purpose.
+    $expires = date("U") + 1800; //This is one hour from the time submit the request.
+
+    $url = "https://cosc4353fuelquoter.herokuapp.com/create-newpwd.php?selector=".$selector."&validator=".bin2hex($token);
+
+    $sql = "DELETE FROM pwdReset WHERE pwdResetEmail = ?;";
+    $stmt = $this->connect()->prepare($sql);
+    if (!$stmt) {
+      echo 'There was an error in SQL';
+      exit();
+    }
+    else {
+      $stmt->execute([$userEmail]);
+    }
+
+    $sql = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?, ?, ?, ?);";
+    $stmt = $this->connect()->prepare($sql);
+    if (!$stmt) {
+      echo 'There was an error in SQL';
+      exit();
+    }
+    else {
+      $hashedToken = password_hash($token, PASSWORD_DEFAULT);
+      $stmt->execute([$userEmail, $selector, $hashedToken, $expires]);
+    }
+
+    $this->connect()->null;
+
+    //This part using PHPMailer and Google Account server to send email to user for resetpwd link
+    $mail = new PHPMailer(true);
+
+  try {
+    //Server settings
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+    $mail->isSMTP();                                            // Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    $mail->Username   = 'cosc4353fuelquoter@gmail.com';                     // SMTP username
+    $mail->Password   = '4353Fuelquoter';                               // SMTP password
+    $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+    //Recipients
+    $mail->setFrom('cosc4353fuelquoter@gmail.com', 'Fuel Quoter');
+    $mail->addAddress($userEmail);     // Add a recipient
+
+    // Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'Reset your password for FuelQuoter';
+    $mail->Body    .= '<p>We received a password request. The link to reset your password is below. If you did not make this request, please ignore this email </p>';
+    $mail->Body    .= '<p>Here is your password reset link:</br>';
+    $mail->Body    .= '<a href="'.$url.'">'.$url.'</a></p>';
+
+    if($mail->send()){
+      echo 'Message has been sent';
+    }
+    else {
+      echo 'ERROR sending email';
+    }
+    $mail->smtpClose();
+
+    header("Location: ../forgotpassword.php?reset=success");
+
+  } catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+  }
+
+  }//End of userResetPwdEmail
+
+  protected function userResetPwd($selector, $validator, $password){
+
+    $currentDate = date("U");
+    $sql = "SELECT * FROM pwdReset WHERE pwdResetSelector = ? AND pwdResetExpires >= ?";
+    $stmt = $this->connect()->prepare($sql);
+    if (!$stmt) {
+      echo 'There was an error!';
+      header("Location: ../create-newpwd.php?error=sqlerror");
+      exit();
+    }
+    else {
+      $stmt->execute([$selector, $currentDate]);
+
+      if (!$row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo 'You need to re-submit your reset request!';
+        header("Location: ../create-newpwd.php?error=sqlerror");
+        exit();
+      }
+      else {
+
+        $tokenBin = hex2bin($validator);
+        $tokenCheck = password_verify($tokenBin, $row['pwdResetToken']); //This is T/F statement to check if whether to token are matched
+
+        if ($tokenCheck == false) {
+          echo 'You need to re-submit your reset request';
+          exit();
+        }
+        elseif ($tokenCheck == true) {
+
+          $tokenEmail = $row['pwdResetEmail'];
+
+          $sql = "SELECT * FROM userCredentials WHERE userEmail = ?;";
+          $stmt = $this->connect()->prepare($sql);
+          if (!$stmt) {
+            echo 'You need to re-submit your reset request!';
+            header("Location: ../create-newpwd.php?error=sqlerror");
+            exit();
+          }
+          else {
+            $stmt->execute([$tokenEmail]);
+
+            if (!$row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+              echo 'There was an error';
+              header("Location: ../create-newpwd.php?error=sqlerror");
+              exit();
+            }
+            else {
+              $sql = "UPDATE userCredentials SET userPassword = ? WHERE userEmail = ?";
+              $stmt = $this->connect()->prepare($sql);
+              if (!$stmt) {
+                echo 'There was an error in updating new password!';
+                header("Location: ../create-newpwd.php?error=updatepwd");
+                exit();
+              }
+              else {
+                $newPwdHash = password_hash($password, PASSWORD_DEFAULT);
+                $stmt->execute([$newPwdHash, $tokenEmail]);
+
+                //Delete the token after the user has used it
+                $sql = "DELETE FROM pwdReset WHERE pwdResetEmail = ?;";
+                $stmt = $this->connect()->prepare($sql);
+                if (!$stmt) {
+                  echo 'There was an error in deleting token email!';
+                  header("Location: ../create-newpwd.php?error=tokenemail");
+                  exit();
+                }
+                else {
+                  $stmt->execute([$tokenEmail]);
+                  header("Location: ../create-newpwd.php?newpwd=passwordupdated");
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }// End of userResetPwd
+
   protected function userCredentialsData()
   {
     $sql = "SELECT * FROM userCredentials;";

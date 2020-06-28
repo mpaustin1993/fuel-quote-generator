@@ -44,4 +44,12 @@ class UserCredentialsControl extends UserCredentials
     $this->usersPwdUpdate($userId, $currentPwd, $newPwd);
   }
 
+  public function userResetPwdEmailInput($userEmail){
+    $this->userResetPwdEmail($userEmail);
+  }
+
+  public function userResetPwdInput($selector, $validator, $password){
+    $this->userResetPwd($selector, $validator, $password);
+  }
+
 }
