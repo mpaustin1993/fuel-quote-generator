@@ -34,6 +34,7 @@
 				</div>
 
         <?php
+					//These two values are get from the url through get method
           $selector = $_GET['selector'];
           $validator = $_GET['validator'];
 
@@ -49,35 +50,6 @@
       					<span class="login100-form-title">
       						Password Reset
       					</span>
-
-      					<?php
-
-        					if (isset($_GET['newpwd'])) { //when we have something equal to something in URL, use _GET method
-        						if ($_GET['newpwd'] == "passwordupdated") {
-        							echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-        							Password has been Reset!
-        							</div>';
-        						}
-                    elseif ($_GET['newpwd'] == "empty") {
-                      echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        							Empty fields!
-        						  </div>';
-                    }
-                    elseif ($_GET['newpwd'] == "pwdnotsame") {
-                      echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        							Passwords do not match.
-        						  </div>';
-                    }
-        					}
-                  elseif (isset($_GET['error'])) {
-                    if ($_GET['error'] == 'sqlerror') {
-                      echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        							SQL Error!.
-        						  </div>';
-                    }
-                  }
-
-      					 ?>
 
                 <input type="hidden" name="selector" value="<?php echo $selector; ?>">
                 <input type="hidden" name="validator" value="<?php echo $validator; ?>">

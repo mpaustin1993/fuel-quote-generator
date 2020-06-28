@@ -230,7 +230,6 @@ class UserCredentials extends Dbh
     $stmt = $this->connect()->prepare($sql);
     if (!$stmt) {
       echo 'There was an error!';
-      header("Location: ../create-newpwd.php?error=sqlerror");
       exit();
     }
     else {
@@ -238,7 +237,6 @@ class UserCredentials extends Dbh
 
       if (!$row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         echo 'You need to re-submit your reset request!';
-        header("Location: ../create-newpwd.php?error=sqlerror");
         exit();
       }
       else {
@@ -258,7 +256,6 @@ class UserCredentials extends Dbh
           $stmt = $this->connect()->prepare($sql);
           if (!$stmt) {
             echo 'You need to re-submit your reset request!';
-            header("Location: ../create-newpwd.php?error=sqlerror");
             exit();
           }
           else {
@@ -266,7 +263,6 @@ class UserCredentials extends Dbh
 
             if (!$row = $stmt->fetch(PDO::FETCH_ASSOC)) {
               echo 'There was an error';
-              header("Location: ../create-newpwd.php?error=sqlerror");
               exit();
             }
             else {
@@ -274,7 +270,6 @@ class UserCredentials extends Dbh
               $stmt = $this->connect()->prepare($sql);
               if (!$stmt) {
                 echo 'There was an error in updating new password!';
-                header("Location: ../create-newpwd.php?error=updatepwd");
                 exit();
               }
               else {
@@ -286,12 +281,11 @@ class UserCredentials extends Dbh
                 $stmt = $this->connect()->prepare($sql);
                 if (!$stmt) {
                   echo 'There was an error in deleting token email!';
-                  header("Location: ../create-newpwd.php?error=tokenemail");
                   exit();
                 }
                 else {
                   $stmt->execute([$tokenEmail]);
-                  header("Location: ../create-newpwd.php?newpwd=passwordupdated");
+                  header("Location: ../index.php?newpwd=passwordupdated");
                 }
               }
             }
