@@ -13,7 +13,7 @@ if (isset($_POST['resetpwd-submit'])) {
     exit();
   }
   else {
-    $userObj->userResetPwdEmail($userEmail);
+    $userObj->userResetPwdEmailInput($userEmail);
   }
 
 }
