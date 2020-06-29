@@ -16,7 +16,6 @@ class clientProfile extends Dbh
 
     $sql = "INSERT INTO clientProfile (clientUserId, clientName, clientAddress1, clientAddress2, clientCity, clientState, clientZip) VALUES (?, ?, ?, ?, ?, ?, ?);";
     $stmt = $this->connect()->prepare($sql);
-
     if (!$stmt) {
       header("Location: ../profilemanager.php?error=sqlerror");
       exit();

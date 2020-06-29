@@ -44,61 +44,33 @@
 					if (isset($_GET['error'])) { //when we have something equal to something in URL, use _GET method
 						if ($_GET['error'] == "emptyfield") {
 							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							  <span aria-hidden="true">&times;</span>
-							</button>
 							Please fill in all fields.
-							
 						  </div>';
 						} elseif ($_GET['error'] == 'invalidemailuid') {
 							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							  <span aria-hidden="true">&times;</span>
-							</button>
 							Invalid username and e-mail.
-							
 						  </div>';
 						} elseif ($_GET['error'] == 'invalidemail') {
 							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							  <span aria-hidden="true">&times;</span>
-							</button>
 							Invalid email address. Please use the format: ex@abc.xyz
-							
 						  </div>';
 						} elseif ($_GET['error'] == 'invaliduid') {
 							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							  <span aria-hidden="true">&times;</span>
-							</button>
 							Invalid username.
-							
 						  </div>';
 						} elseif ($_GET['error'] == 'userNameTaken') {
 							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							  <span aria-hidden="true">&times;</span>
-							</button>
 							Sorry, that username is already taken.
-							
 						  </div>';
 						} elseif ($_GET['error'] == 'passwordcheck') {
 							echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							  <span aria-hidden="true">&times;</span>
-							</button>
 							Passwords do not match.
-							
 						  </div>';
 						}
 					} elseif (isset($_GET['signup'])) {
 						if ($_GET['signup'] == "success") {
 							echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							  <span aria-hidden="true">&times;</span>
-							</button>
 							Signup successful!
-							
 						  </div>';
 						}
 					}

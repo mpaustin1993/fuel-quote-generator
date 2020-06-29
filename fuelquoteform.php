@@ -105,7 +105,7 @@
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button type="submit" name="quote-input"class="login100-form-btn">
+                        <button type="submit" name="quote-input" class="login100-form-btn">
                             Generate Quote
                         </button>
                     </div>

@@ -33,45 +33,69 @@
 					<img style="width: 25rem;" src="images/undraw_forgot_password.svg" alt="">
 				</div>
 
-				<form class="login100-form validate-form" method="POST" action="includes/resetpwdrequest.inc.php">
-					<span class="login100-form-title">
-						Forgot Password
-					</span>
-					<?php
-						if (isset($_GET['reset'])) { //when we have something equal to something in URL, use _GET method
-							if ($_GET['reset'] == "success") {
-								echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-								Reset Password Request Sent!
-								</div>';
-							}
-						}
-					 ?>
-					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
+        <?php
+					//These two values are get from the url through get method
+          $selector = $_GET['selector'];
+          $validator = $_GET['validator'];
 
-					<div class="container-login100-form-btn">
-						<button type="submit" name="resetpwd-submit" class="login100-form-btn">
-							Reset Password
-						</button>
-					</div>
+          if (empty($selector) || empty($validator)) {
+            echo "Could not validate your request!";
+          }
+          else {
+            if (ctype_xdigit($selector) !== false && ctype_xdigit($validator) !== false) {//Verify if the token are in the correct format
+              ?>
 
-					<div class="text-center p-t-136">
-						<a class="txt2" href="index.php">
-							Already have an account? Log in
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
-						<br>
-						<a class="txt2" href="signup.php">
-							Create your Account
-							<!-- <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> -->
-						</a>
-					</div>
-				</form>
+              <!-- Dothing this to make the html format easier to see in the text editor -->
+              <form class="login100-form validate-form" method="POST" action="includes/passwordmanager.inc.php">
+      					<span class="login100-form-title">
+      						Password Reset
+      					</span>
+
+                <input type="hidden" name="selector" value="<?php echo $selector; ?>">
+                <input type="hidden" name="validator" value="<?php echo $validator; ?>">
+      					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+      						<input class="input100" type="password" name="newpwd" placeholder="New Password">
+      						<span class="focus-input100"></span>
+      						<span class="symbol-input100">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+      						</span>
+      					</div>
+
+                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+      						<input class="input100" type="password" name="confirm-newpwd" placeholder="Confirm Password">
+      						<span class="focus-input100"></span>
+      						<span class="symbol-input100">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+      						</span>
+      					</div>
+
+      					<div class="container-login100-form-btn">
+      						<button type="submit" name="createnewpwd" class="login100-form-btn">
+      							Reset Password
+      						</button>
+      					</div>
+
+      					<div class="text-center p-t-136">
+      						<a class="txt2" href="index.php">
+      							Already have an account? Log in
+      							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+      						</a>
+      						<br>
+      						<a class="txt2" href="signup.php">
+      							Create your Account
+      							<!-- <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> -->
+      						</a>
+      					</div>
+      				</form>
+
+              <?php
+
+            }
+          }
+        ?>
+
+
+
 			</div>
 		</div>
 	</div>
