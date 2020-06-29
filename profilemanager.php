@@ -43,6 +43,42 @@
                         Your Profile
                     </span>
 
+                    <?php
+                    if (isset($_GET['error'])) { //when we have something equal to something in URL, use _GET method
+                        if ($_GET['error'] == 'invalidname') {
+                            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							Please enter your first and last name in the following format: First Last
+						  </div>';
+                        } elseif ($_GET['error'] == 'invalidaddress') {
+                            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							Please enter a valid address.
+						  </div>';
+                        } elseif ($_GET['error'] == 'invalidaddress2') {
+                            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							Please enter a valid apartment number.
+						  </div>';
+                        } elseif ($_GET['error'] == 'invalidcity') {
+                            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							Please enter a valid city name.
+                          </div>';
+                        } elseif ($_GET['error'] == 'invalidstate') {
+                            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							Please select a state.
+						  </div>';
+                        } elseif ($_GET['error'] == 'invalidzip') {
+                            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							Please enter a valid zip code.
+						  </div>';
+                        }
+                    } elseif (isset($_GET['editprofile'])) {
+                        if ($_GET['editprofile'] == "success") {
+                            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+							Profile updated!
+						  </div>';
+                        }
+                    }
+                    ?>
+
                     <div class="wrap-input100">
                         <input class="input100" type="text" name="username" value=<?php echo $_SESSION['username'] ?>>
                         <span class="focus-input100"></span>

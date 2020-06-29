@@ -14,17 +14,42 @@ class clientProfile extends Dbh
   protected function updateProfile($clientUserId, $clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip)
   {
 
-    $sql = "INSERT INTO clientProfile (clientUserId, clientName, clientAddress1, clientAddress2, clientCity, clientState, clientZip) VALUES (?, ?, ?, ?, ?, ?, ?);";
+    $sql = "SELECT clientUserId FROM clientProfile WHERE clientUserId=?"; // ? is a placeholder
+
     $stmt = $this->connect()->prepare($sql);
     if (!$stmt) {
-      header("Location: ../profilemanager.php?error=sqlerror");
+      header("Location: ../profilemanager.php?error=sqlError");
       exit();
     } else {
-      $stmt->execute([$clientUserId, $clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip]);
-      header("Location: ../profilemanager.php?&editprofile=success");
-      exit();
+      $stmt->execute([$clientUserId]);
+      $resultCheck = $stmt->fetchColumn();
+
+      if ($resultCheck == true) {
+        $sql = "UPDATE clientProfile SET clientName = ?, clientAddress1 = ?, clientAddress2 = ?, clientCity = ?, clientState = ?, clientZip = ? WHERE clientUserId = ?";
+        $stmt = $this->connect()->prepare($sql);
+        if (!$stmt) {
+          header("Location: ../profilemanager.php?clientUserId=" . $clientUserId . "&error=sqlerror");
+          exit();
+        } else {
+          $stmt->execute($clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip, $clientUserId);
+          header("Location: ../profilemanager.php?tid=" . $clientUserId . "&editprofile=success");
+          exit();
+        }
+      } else {
+
+        $sql = "INSERT INTO clientProfile (clientUserId, clientName, clientAddress1, clientAddress2, clientCity, clientState, clientZip) VALUES (?, ?, ?, ?, ?, ?, ?);";
+        $stmt = $this->connect()->prepare($sql);
+        if (!$stmt) {
+          header("Location: ../profilemanager.php?error=sqlerror");
+          exit();
+        } else {
+          $stmt->execute([$clientUserId, $clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip]);
+          header("Location: ../profilemanager.php?&editprofile=success");
+          exit();
+        }
+        $this->connect()->null;
+      }
     }
-    $this->connect()->null;
   }
 
   protected function clientProfileData()
