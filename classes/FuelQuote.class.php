@@ -2,7 +2,11 @@
 
 class FuelQuote extends Dbh {
 
-  public function fuelQuoteInput($quoteClientId, $quoteGallon, $quoteDeliverAdr,$quoteState, $quoteZipcode, $quoteDeliverDate){
+  protected function fuelQuoteInput($quoteClientId, $quoteGallon, $quoteDeliverAdr,$quoteState, $quoteZipcode, $quoteDeliverDate){
+
+  }
+
+  protected function fuelQuoteShow(){
     
   }
 

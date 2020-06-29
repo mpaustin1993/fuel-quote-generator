@@ -2,4 +2,10 @@
 
 class FuelQuoteView extends FuelQuote {
 
+
+  public function fuelQuoteDataShow(){
+
+  }
+
+  
 }
