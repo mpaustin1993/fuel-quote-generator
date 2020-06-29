@@ -1,3 +1,8 @@
+<?php
+    include 'includes/autoloader.inc.php';
+    $fuelQuoteObj = new FuelQuoteView();
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,6 +55,7 @@
             <span class="login100-form-title">
               Quote History
             </span>
+            <!-- Below are much data showing the history of the quote -->
             <table class="table table-bordered display" text-align="center" cellspacing="0">
               <thead>
                 <tr>
@@ -68,7 +74,6 @@
                   <td>100</td>
                   <td>$3.40/Gal</td>
                   <td>$340</td>
-                  <!-- <td><strong><a href="#"></a></strong></td> -->
                 </tr>
 
                 <tr>

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\SMTP;
@@ -67,7 +69,7 @@ class UserCredentials extends Dbh
           $_SESSION['username'] = $row['userName'];
           $_SESSION['email'] = $row['userEmail'];
 
-          header("Location: ../profilemanager.php?login=success");
+          header("Location: ../profilemanager.php?sid=".$_SESSION['id']."&login=success");
           exit();
         } else {
           header("Location: ../index.php?error=wrongpwd");

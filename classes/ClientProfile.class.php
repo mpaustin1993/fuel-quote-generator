@@ -2,14 +2,6 @@
 
 session_start();
 
-// Import PHPMailer classes into the global namespace
-// These must be at the top of your script, not inside a function
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'PHPMailer/vendor/autoload.php';
-
 class clientProfile extends Dbh
 {
 

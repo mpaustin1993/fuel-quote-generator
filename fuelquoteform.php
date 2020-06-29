@@ -1,4 +1,7 @@
-
+<?php
+  include 'includes/autoloader.inc.php';
+  $fuelQuoteObj = new FuelQuoteView();
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
