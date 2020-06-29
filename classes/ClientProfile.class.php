@@ -14,7 +14,7 @@ class clientProfile extends Dbh
   protected function updateProfile($clientUserId, $clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip)
   {
 
-    $sql = "SELECT clientUserId FROM clientProfile WHERE clientUserId=?"; // ? is a placeholder
+    $sql = "SELECT * FROM clientProfile WHERE clientUserId=?;"; // ? is a placeholder
 
     $stmt = $this->connect()->prepare($sql);
     if (!$stmt) {
@@ -25,16 +25,18 @@ class clientProfile extends Dbh
       $resultCheck = $stmt->fetchColumn();
 
       if ($resultCheck == true) {
-        $sql = "UPDATE clientProfile SET clientName = ?, clientAddress1 = ?, clientAddress2 = ?, clientCity = ?, clientState = ?, clientZip = ? WHERE clientUserId = ?";
+        $sql = "UPDATE clientProfile SET clientName = ?, clientAddress1 = ?, clientAddress2 = ?, clientCity = ?, clientState = ?, clientZip = ? WHERE clientUserId = ?;";
         $stmt = $this->connect()->prepare($sql);
         if (!$stmt) {
           header("Location: ../profilemanager.php?clientUserId=" . $clientUserId . "&error=sqlerror");
           exit();
-        } else {
-          $stmt->execute($clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip, $clientUserId);
-          header("Location: ../profilemanager.php?tid=" . $clientUserId . "&editprofile=success");
+        }
+        else {
+          $stmt->execute([$clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip, $clientUserId]);
+          header("Location: ../profilemanager.php?tid=" . $clientUserId . "&editprofile=successupdate");
           exit();
         }
+
       } else {
 
         $sql = "INSERT INTO clientProfile (clientUserId, clientName, clientAddress1, clientAddress2, clientCity, clientState, clientZip) VALUES (?, ?, ?, ?, ?, ?, ?);";
@@ -44,10 +46,10 @@ class clientProfile extends Dbh
           exit();
         } else {
           $stmt->execute([$clientUserId, $clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip]);
-          header("Location: ../profilemanager.php?&editprofile=success");
+          header("Location: ../profilemanager.php?&editprofile=successinsert");
           exit();
         }
-        $this->connect()->null;
+        // $this->connect()->null;
       }
     }
   }
