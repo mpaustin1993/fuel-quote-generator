@@ -3,9 +3,10 @@
 class ClientProfileView extends ClientProfile
 {
 
-  public function userDataShow()
+  public function getClientData()
   {
+    $result = array();
     $result = $this->clientProfileData();
-    echo $result;
+    return $result;
   }
 }

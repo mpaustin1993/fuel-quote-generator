@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 ?>
 <nav class="navbar navbar-expand-lg navbar-light">
   <a class="navbar-brand" href="fuelquoteform.php"> <img class="quotelogo" src="images/LogoNoBackground.png" alt=""></a>
