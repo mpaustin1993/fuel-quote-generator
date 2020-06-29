@@ -16,7 +16,6 @@ if (isset($_POST['editprofile-submit'])) {
   $profileObj = new ClientProfileControl();
 
   $profileObj->updateProfileInput($_SESSION['id'], $namePost, $address1Post, $address2Post, $cityPost, $statePost, $zipPost);
-}
-else {
+} else {
   header("Location: ../profilemanager.php");
 }
