@@ -6,16 +6,15 @@ include 'autoloader.inc.php';
 
 if (isset($_POST['editprofile-submit'])) {
 
-  $namePost = $_POST['name'];
-  $address1Post = $_POST['address1'];
-  $address2Post = $_POST['address2'];
-  $cityPost = $_POST['city'];
-  $statePost = $_POST['state'];
-  $zipPost = $_POST['zip'];
+  $name = $_POST['name'];
+  $address1 = $_POST['address1'];
+  $address2 = $_POST['address2'];
+  $city = $_POST['city'];
+  $state = $_POST['state'];
+  $zip = $_POST['zip'];
 
   $profileObj = new ClientProfileControl();
-
-  $profileObj->updateProfileInput($_SESSION['id'], $namePost, $address1Post, $address2Post, $cityPost, $statePost, $zipPost);
+  $profileObj->updateProfileInput($_SESSION['id'], $name, $address1, $address2, $city, $state, $zip);
 } else {
   header("Location: ../profilemanager.php");
 }
