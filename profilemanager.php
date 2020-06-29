@@ -1,3 +1,9 @@
+<?php
+include 'includes/autoloader.inc.php';
+$clientObj = new ClientProfileView();
+$clientData = $clientObj->getClientData();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +31,6 @@
 </head>
 
 
-
 <body>
     <div class="container">
         <?php
@@ -44,6 +49,7 @@
                     </span>
 
                     <?php
+
                     if (isset($_GET['error'])) { //when we have something equal to something in URL, use _GET method
                         if ($_GET['error'] == 'invalidname') {
                             echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -81,7 +87,6 @@
 
                     <div class="wrap-input100">
                         <input class="input100" type="text" name="username" value=<?php echo $_SESSION['username'] ?>>
-                        <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-user" aria-hidden="true"></i>
                         </span>
@@ -89,14 +94,17 @@
 
                     <div class="wrap-input100">
                         <input class="input100" type="text" name="email" value=<?php echo $_SESSION['email'] ?>>
-                        <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
                     </div>
 
                     <div class="wrap-input100">
-                        <input class="input100" type="text" name="name" placeholder="Full Name">
+                        <input class="input100" type="text" name="name" value="<?php
+                                                                                if ($clientData != NULL) {
+                                                                                    echo $clientData['name'];
+                                                                                }
+                                                                                ?>" placeholder="Full Name">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-address-card" aria-hidden="true"></i>
@@ -104,7 +112,11 @@
                     </div>
 
                     <div class="wrap-input100">
-                        <input class="input100" type="text" name="address1" placeholder="Address">
+                        <input class="input100" type="text" name="address1" value="<?php
+                                                                                    if ($clientData != NULL) {
+                                                                                        echo $clientData['address1'];
+                                                                                    }
+                                                                                    ?>" placeholder="Address">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -112,7 +124,11 @@
                     </div>
 
                     <div class="wrap-input100">
-                        <input class="input100" type="text" name="address2" placeholder="Apt. #">
+                        <input class="input100" type="text" name="address2" value="<?php
+                                                                                    if ($clientData != NULL) {
+                                                                                        echo $clientData['address2'];
+                                                                                    }
+                                                                                    ?>" placeholder="Apt. #">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -120,7 +136,11 @@
                     </div>
 
                     <div class="wrap-input100">
-                        <input class="input100" type="text" name="city" placeholder="City">
+                        <input class="input100" type="text" name="city" value="<?php
+                                                                                if ($clientData != NULL) {
+                                                                                    echo $clientData['city'];
+                                                                                }
+                                                                                ?>" placeholder="City">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-map-signs" aria-hidden="true"></i>
@@ -129,7 +149,16 @@
 
                     <div class="wrap-input100">
                         <select class="input100" type="text" name="state">
-                            <option value="" hidden>State</option>
+                            <option value="<?php
+                                            if ($clientData != NULL) {
+                                                echo $clientData['state'];
+                                            }
+                                            ?>" hidden><?php
+                                                        if ($clientData != NULL) {
+                                                            echo $clientData['state'];
+                                                        }
+                                                        ?></option>
+                            <option value="" placeholder>State</option>
                             <option value="TX">TX</option>
                             <option value="AZ">AZ</option>
                             <option value="MS">MS</option>
@@ -142,7 +171,11 @@
                     </div>
 
                     <div class="wrap-input100">
-                        <input class="input100" type="text" name="zip" placeholder="Zip Code">
+                        <input class="input100" type="text" name="zip" value="<?php
+                                                                                if ($clientData != NULL) {
+                                                                                    echo $clientData['zip'];
+                                                                                }
+                                                                                ?>" placeholder="Zip Code">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>

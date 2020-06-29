@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\SMTP;
@@ -14,7 +16,7 @@ class clientProfile extends Dbh
   protected function updateProfile($clientUserId, $clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip)
   {
 
-    $sql = "SELECT * FROM clientProfile WHERE clientUserId=?"; // ? is a placeholder
+    $sql = "SELECT * FROM clientProfile WHERE clientUserId = ?"; // ? is a placeholder
 
     $stmt = $this->connect()->prepare($sql);
     if (!$stmt) {
@@ -25,14 +27,14 @@ class clientProfile extends Dbh
       $resultCheck = $stmt->fetchColumn();
 
       if ($resultCheck == true) {
-        $sql = "UPDATE clientProfile SET clientName = ? WHERE clientUserId = ?";
+        $sql = "UPDATE clientProfile SET clientName = ?, clientAddress1 = ?, clientAddress2 = ?, clientCity = ?, clientState = ?, clientZip = ? WHERE clientUserId = ?";
         $stmt = $this->connect()->prepare($sql);
         if (!$stmt) {
           header("Location: ../profilemanager.php?clientUserId=" . $clientUserId . "&error=sqlerror");
           exit();
         } else {
-          $stmt->execute([$clientName, $clientUserId]);
-          header("Location: ../profilemanager.php?tid=" . $clientUserId . "&editprofile=success");
+          $stmt->execute([$clientName, $clientAddress1, $clientAddress2, $clientCity, $clientState, $clientZip, $clientUserId]);
+          header("Location: ../profilemanager.php?clientUserId=" . $clientUserId . "&editprofile=success");
           exit();
         }
       } else {
@@ -52,24 +54,32 @@ class clientProfile extends Dbh
     }
   }
 
+
   protected function clientProfileData()
   {
-    $sql = "SELECT * FROM clientProfile;";
-    $stmt = $this->connect()->query($sql);
-    $clientProfileData = "";
+    $clientProfileData = array();
+    $clientUserId = $_SESSION['id'];
 
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-      $clientProfileData .=
-        "<tr>
-        <td>" . $row['clientUserId'] . "</td>"
-        . "<td>" . $row['clientName'] . "</td>"
-        . "<td>" . $row['clientAddress1'] . "</td>"
-        . "<td>" . $row['clientAddress2'] . "</td>"
-        . "<td>" . $row['clientCity'] . "</td>"
-        . "<td>" . $row['clientState'] . "</td>"
-        . "<td>" . $row['clientZip'] . "</td>
-      </tr>";
+    $sql = "SELECT * FROM clientProfile WHERE clientUserId = ?";
+    $stmt = $this->connect()->prepare($sql);
+
+    if (!$stmt) {
+      header("Location: ../clientProfile.php?clientUserId=" . $clientUserId . "&error=sqlerror");
+      return NULL;
+      exit();
+    } else {
+      $stmt->execute([$clientUserId]);
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $clientProfileData = array(
+          "name" => $row['clientName'],
+          "address1" => $row['clientAddress1'],
+          "address2" => $row['clientAddress2'],
+          "city" => $row['clientCity'],
+          "state" => $row['clientState'],
+          "zip" => $row['clientZip']
+        );
+      }
     }
     return $clientProfileData;
-  }
+  } //End of ticketHistoryData
 } // end of class
