@@ -3,7 +3,6 @@
 class ClientProfileView extends ClientProfile
 {
 
-
   public function getClientData()
   {
     $result = array();

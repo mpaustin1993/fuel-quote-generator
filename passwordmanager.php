@@ -1,5 +1,9 @@
 <?php
   include 'includes/autoloader.inc.php';
+
+    $userObj = new UserCredentialsView();
+    // $clientData = $clientObj->getClientData();
+
  ?>
 
 <!DOCTYPE html>

@@ -1,6 +1,3 @@
-<?php
-// session_start();
-?>
 <nav class="navbar navbar-expand-lg navbar-light">
   <a class="navbar-brand" href="fuelquoteform.php"> <img class="quotelogo" src="images/LogoNoBackground.png" alt=""></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,7 +11,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?php echo $_SESSION['username']  ?>
+          <?php echo $_SESSION['username'];  ?>
           <!-- Drop down -->
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
