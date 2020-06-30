@@ -1,6 +1,8 @@
 <?php
   include 'includes/autoloader.inc.php';
-  $fuelQuoteObj = new FuelQuoteView();
+  // $fuelQuoteObj = new FuelQuoteView();
+  $clientObj = new ClientProfileView();
+  $clientData = $clientObj->getClientData();
  ?>
 
 <!DOCTYPE html>
@@ -12,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- For overriding small elements -->
-    <link rel="stylesheet" type="text/css" href="css/override.css">
+    <link rel="stylesheet" type="text/css" href="css/override3.css">
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="images/LogoNoBackground.png" />
     <!--===============================================================================================-->
@@ -42,14 +44,28 @@
         <div class="limiter">
 
             <div class="wrap-login100">
-                <div class="login100-pic js-tilt" data-tilt>
-                    <img style="width: 20rem;" src="images/undraw_data_report_bi6l.svg" alt="IMG">
+                <div class="js-tilt" data-tilt>
+                    <img style="width: 35rem;" src="images/undraw_data_report_bi6l.svg" alt="IMG">
                 </div>
 
                 <form action="includes/fuelquote.inc.php" class="login100-form validate-form" method="POST">
                     <span class="login100-form-title">
                         Fuel Quote Form
                     </span>
+
+                    <div class="row info-row">
+                      <div class="col-lg-12">
+                        <p class="info-topic">Delivery Address:</p>
+                        <p class="info-data"><?php
+                            if ($clientData != NULL) {
+                                echo $clientData['address1'] . " " . $clientData['address2'] . ", " . $clientData['city'] . ", " .$clientData['state'] . " " .$clientData['zip'];
+                            } else {
+                                echo 'N/A';
+                            }
+                            ?></p>
+                            <hr>
+                      </div>
+                    </div>
 
                     <input type="hidden" name="clientid" value="<?php echo $_SESSION['id']; ?>">
 
@@ -58,44 +74,6 @@
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-industry" aria-hidden="true"></i>
-                        </span>
-                    </div>
-
-
-                    <div class="wrap-input100 validate-input">
-                        <input class="input100" type="text" name="deliveryAdr" required placeholder="Delivery Address">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        </span>
-                    </div>
-
-                    <div class="wrap-input100 validate-input">
-                        <input class="input100" type="text" name="deliveryCity" required placeholder="City">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        </span>
-                    </div>
-
-                    <div class="wrap-input100">
-                        <select class="input100" type="text" name="state">
-                            <option value="" hidden>State</option>
-                            <option value="TX">TX</option>
-                            <option value="AZ">AZ</option>
-                            <option value="MS">MS</option>
-                            <option value="TE">TE</option>
-                        </select>
-                        <span class="symbol-input100">
-                            <i class="fa fa-map" aria-hidden="true"></i>
-                        </span>
-                    </div>
-
-                    <div class="wrap-input100 validate-input">
-                        <input class="input100" type="zip" name="zipcode" required placeholder="Zipcode">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
                         </span>
                     </div>
 

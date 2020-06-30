@@ -69,7 +69,7 @@ class UserCredentials extends Dbh
           $_SESSION['username'] = $row['userName'];
           $_SESSION['email'] = $row['userEmail'];
 
-          header("Location: ../profilemanager.php?sid=" . $_SESSION['id'] . "&login=success");
+          header("Location: ../profilemanager.php?login=success");
           exit();
         } else {
           header("Location: ../index.php?error=wrongpwd");
