@@ -3,21 +3,21 @@
 class FuelQuoteControl extends FuelQuote
 {
 
-  public function fuelQuoteInputSubmission($quoteClientId, $quoteGallon, $quoteDeliverAdr, $quoteDeliverCity, $quoteState, $quoteZipcode, $quoteDeliverDate)
+  public function fuelQuoteInputSubmission($quoteClientId, $quoteGallon, $quoteAddress, $quoteCity, $quoteState, $quoteZip, $quoteDeliveryDate)
   {
 
     //If one of the field is empty, the error will return and entered input will be set
-    if (empty($quoteGallon) || empty($quoteDeliverAdr) || empty($quoteDeliverCity) || empty($quoteState) || empty($quoteZipcode) || empty($quoteDeliverDate)) {
-      header("Location: ../fuelquoteform.php?error=emptyfield&deliveryAdr=" . $quoteDeliverAdr . "&deliveryCity=" . $quoteDeliverCity . "&zipcode=" . $quoteZipcode);
+    if (empty($quoteGallon) || empty($quoteAddress) || empty($quoteCity) || empty($quoteState) || empty($quoteZip) || empty($quoteDeliveryDate)) {
+      header("Location: ../fuelquoteform.php?error=emptyfield&deliveryAdr=" . $quoteAddress . "&deliveryCity=" . $quoteCity . "&Zip=" . $quoteZip);
       exit();
-    } elseif (!preg_match("/^[a-zA-Z]*$/", $quoteDeliverCity)) {   //Regex for City using only letters
-      header("Location: ../fuelquoteform.php?error=invalidzipcode");
+    } elseif (!preg_match("/^[a-zA-Z]*$/", $quoteCity)) {   //Regex for City using only letters
+      header("Location: ../fuelquoteform.php?error=invalidZip");
       exit();
-    } elseif (!preg_match("/^[0-9]{5,9}$/", $quoteZipcode)) {   //Regex for Zipcode using only digits
-      header("Location: ../fuelquoteform.php?error=invalidzipcode");
+    } elseif (!preg_match("/^[0-9]{5,9}$/", $quoteZip)) {   //Regex for Zip using only digits
+      header("Location: ../fuelquoteform.php?error=invalidZip");
       exit();
     } else {
-      $this->fuelQuoteInput($quoteClientId, $quoteGallon, $quoteDeliverAdr, $quoteState, $quoteZipcode, $quoteDeliverDate);
+      $this->fuelQuoteInput($quoteClientId, $quoteGallon, $quoteAddress, $quoteCity, $quoteState, $quoteZip, $quoteDeliveryDate);
     }
   }
 }

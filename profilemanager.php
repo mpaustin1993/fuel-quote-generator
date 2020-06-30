@@ -1,7 +1,7 @@
 <?php
-  include 'includes/autoloader.inc.php';
-  $clientObj = new ClientProfileView();
-  $clientData = $clientObj->getClientData();
+include 'includes/autoloader.inc.php';
+$clientObj = new ClientProfileView();
+$clientData = $clientObj->getClientData();
 ?>
 
 <!DOCTYPE html>
@@ -85,111 +85,107 @@
                     }
                     ?>
 
-                    <div class="wrap-input100">
-                        <input class="input100" type="text" name="username" value=<?php echo $_SESSION['username']; ?> placeholder="<?php echo $_SESSION['username']; ?>">
-                        <span class="symbol-input100">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                        </span>
-                    </div>
+                    <table class="table table-striped display" text-align="center" cellspacing="0">
 
-                    <div class="wrap-input100">
-                        <input class="input100" type="text" name="email" value=<?php echo $_SESSION['email']; ?> placeholder="<?php echo $_SESSION['email']; ?>">
-                        <span class="symbol-input100">
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                        </span>
-                    </div>
+                        <tbody>
+                            <tr>
+                                <td><strong>Username</strong></td>
+                                <td><?php echo $_SESSION['username']; ?></td>
+                            </tr>
 
-                    <div class="wrap-input100">
-                        <input class="input100" type="text" name="name" value="<?php
-                                                                                if ($clientData != NULL) {
-                                                                                    echo $clientData['name'];
-                                                                                }
-                                                                                ?>" placeholder="Full Name">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-address-card" aria-hidden="true"></i>
-                        </span>
-                    </div>
+                            <tr>
+                                <td><strong>Email</strong></td>
+                                <td><?php echo $_SESSION['email']; ?></td>
+                            </tr>
 
-                    <div class="wrap-input100">
-                        <input class="input100" type="text" name="address1" value="<?php
-                                                                                    if ($clientData != NULL) {
-                                                                                        echo $clientData['address1'];
-                                                                                    }
-                                                                                    ?>" placeholder="Address">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        </span>
-                    </div>
+                            <tr>
+                                <td><strong>Full Name</strong>
+                                <td><?php
+                                    if ($clientData != NULL) {
+                                        echo $clientData['name'];
+                                    } else {
+                                        echo 'N/A';
+                                    }
+                                    ?>
+                                </td>
+                            </tr>
 
-                    <div class="wrap-input100">
-                        <input class="input100" type="text" name="address2" value="<?php
-                                                                                    if ($clientData != NULL) {
-                                                                                        echo $clientData['address2'];
-                                                                                    }
-                                                                                    ?>" placeholder="Apt. #">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        </span>
-                    </div>
+                            <tr>
+                                <td><strong>Address</strong>
+                                <td><?php
+                                    if ($clientData != NULL) {
+                                        echo $clientData['address1'];
+                                    } else {
+                                        echo 'N/A';
+                                    }
+                                    ?>
+                                </td>
+                            </tr>
 
-                    <div class="wrap-input100">
-                        <input class="input100" type="text" name="city" value="<?php
-                                                                                if ($clientData != NULL) {
-                                                                                    echo $clientData['city'];
-                                                                                }
-                                                                                ?>" placeholder="City">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-map-signs" aria-hidden="true"></i>
-                        </span>
-                    </div>
+                            <tr>
+                                <td><strong>Apt. #</strong>
+                                <td><?php
+                                    if ($clientData != NULL) {
+                                        echo $clientData['address2'];
+                                    } else {
+                                        echo 'N/A';
+                                    }
+                                    ?>
+                                </td>
+                            </tr>
 
-                    <div class="wrap-input100">
-                        <select class="input100" type="text" name="state">
-                            <option value="<?php
-                                            if ($clientData != NULL) {
-                                                echo $clientData['state'];
-                                            }
-                                            ?>" hidden><?php
-                                                        if ($clientData != NULL) {
-                                                            echo $clientData['state'];
-                                                        }
-                                                        ?></option>
-                            <option value="" placeholder>State</option>
-                            <option value="TX">TX</option>
-                            <option value="AZ">AZ</option>
-                            <option value="MS">MS</option>
-                            <option value="TE">TE</option>
-                        </select>
-                        <span class="symbol-input100">
-                            <i class="fa fa-map" aria-hidden="true"></i>
-                        </span>
+                            <tr>
+                                <td><strong>City</strong>
+                                <td><?php
+                                    if ($clientData != NULL) {
+                                        echo $clientData['city'];
+                                    } else {
+                                        echo 'N/A';
+                                    }
+                                    ?>
+                                </td>
+                            </tr>
 
-                    </div>
+                            <tr>
+                                <td><strong>State</strong>
+                                <td><?php
+                                    if ($clientData != NULL) {
+                                        echo $clientData['state'];
+                                    } else {
+                                        echo 'N/A';
+                                    }
+                                    ?>
+                                </td>
+                            </tr>
 
-                    <div class="wrap-input100">
-                        <input class="input100" type="text" name="zip" value="<?php
-                                                                                if ($clientData != NULL) {
-                                                                                    echo $clientData['zip'];
-                                                                                }
-                                                                                ?>" placeholder="Zip Code">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        </span>
-                    </div>
+                            <tr>
+                                <td><strong>Zip Code</strong>
+                                <td> <?php
+                                        if ($clientData != NULL) {
+                                            echo $clientData['zip'];
+                                        } else {
+                                            echo 'N/A';
+                                        }
+                                        ?>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
 
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" type="submit" name="editprofile-submit">
                             Edit Profile
                         </button>
                     </div>
-                </form>
             </div>
+
+
+
+
+            </form>
         </div>
+    </div>
     </div>
 
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,8 +57,7 @@
 							Database error.
 						  </div>';
 						}
-					}
-					elseif (isset($_GET['newpwd'])) {
+					} elseif (isset($_GET['newpwd'])) {
 						if ($_GET['newpwd'] == "passwordupdated") {
 							echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
 							Password has been reset!

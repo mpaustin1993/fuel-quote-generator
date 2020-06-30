@@ -69,7 +69,7 @@ class UserCredentials extends Dbh
           $_SESSION['username'] = $row['userName'];
           $_SESSION['email'] = $row['userEmail'];
 
-          header("Location: ../profilemanager.php?sid=".$_SESSION['id']."&login=success");
+          header("Location: ../profilemanager.php?sid=" . $_SESSION['id'] . "&login=success");
           exit();
         } else {
           header("Location: ../index.php?error=wrongpwd");
@@ -82,15 +82,15 @@ class UserCredentials extends Dbh
     }
   } //End of userLogin
 
-  protected function demoUserLogin($demoUsername){
+  protected function demoUserLogin($demoUsername)
+  {
     $sql = "SELECT * FROM userCredentials WHERE userName = ?;";
 
     $stmt = $this->connect()->prepare($sql);
     if (!$stmt) {
       header("Location: ../index.php?error=sqlError");
       exit();
-    }
-    else {
+    } else {
       $stmt->execute([$demoUsername]);
       if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         session_start();
@@ -100,8 +100,7 @@ class UserCredentials extends Dbh
 
         header("Location: ../fuelquoteform.php?login=demo");
         exit();
-      }
-      else {
+      } else {
         header("Location: ../index.php?error=nouser");
         exit();
       }
@@ -109,7 +108,8 @@ class UserCredentials extends Dbh
   } //End of demoUserLogin
 
 
-  protected function usersPwdUpdate($userId, $currentPwd,$newPwd) {
+  protected function usersPwdUpdate($userId, $currentPwd, $newPwd)
+  {
 
     $sql = "SELECT * FROM userCredentials WHERE userId = ?;";
     $stmt = $this->connect()->prepare($sql);
@@ -117,8 +117,7 @@ class UserCredentials extends Dbh
     if (!$stmt) {
       header("Location: ../passwordmanager.php?error=sqlerror");
       exit();
-    }
-    else {
+    } else {
       $stmt->execute([$userId]);
       if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $pwdCheck = password_verify($currentPwd, $row['userPassword']);
@@ -126,8 +125,7 @@ class UserCredentials extends Dbh
         if ($pwdCheck == false) {
           header("Location: ../passwordmanager.php?error=notcurrentpwd");
           exit();
-        }
-        elseif ($pwdCheck == true) {
+        } elseif ($pwdCheck == true) {
           $hashedNewPwd = password_hash($newPwd, PASSWORD_DEFAULT);
 
           $sql = "UPDATE userCredentials SET userPassword = ?;";
@@ -135,21 +133,19 @@ class UserCredentials extends Dbh
           if (!$stmt) {
             header("Location: ../passwordmanager.php?error=sqlerror");
             exit();
-          }
-          else {
+          } else {
             $stmt->execute([$hashedNewPwd]);
             header("Location: ../passwordmanager.php?newpwdset=success");
           }
-        }
-        else {
+        } else {
           header("Location: ../passwordmanager.php?error=nouser");
         }
       }
     }
+  } //End of usersPwdUpdate
 
-  }//End of usersPwdUpdate
-
-  protected function userResetPwdEmail($userEmail){
+  protected function userResetPwdEmail($userEmail)
+  {
 
     //Create selector and token for validation
     $selector = bin2hex(random_bytes(8));
@@ -159,15 +155,14 @@ class UserCredentials extends Dbh
     //This will give the user a limited time to use for securing purpose.
     $expires = date("U") + 1800; //This is one hour from the time submit the request.
 
-    $url = "https://cosc4353fuelquoter.herokuapp.com/create-newpwd.php?selector=".$selector."&validator=".bin2hex($token);
+    $url = "https://cosc4353fuelquoter.herokuapp.com/create-newpwd.php?selector=" . $selector . "&validator=" . bin2hex($token);
 
     $sql = "DELETE FROM pwdReset WHERE pwdResetEmail = ?;";
     $stmt = $this->connect()->prepare($sql);
     if (!$stmt) {
       echo 'There was an error in SQL';
       exit();
-    }
-    else {
+    } else {
       $stmt->execute([$userEmail]);
     }
 
@@ -176,8 +171,7 @@ class UserCredentials extends Dbh
     if (!$stmt) {
       echo 'There was an error in SQL';
       exit();
-    }
-    else {
+    } else {
       $hashedToken = password_hash($token, PASSWORD_DEFAULT);
       $stmt->execute([$userEmail, $selector, $hashedToken, $expires]);
     }
@@ -187,45 +181,43 @@ class UserCredentials extends Dbh
     //This part using PHPMailer and Google Account server to send email to user for resetpwd link
     $mail = new PHPMailer(true);
 
-  try {
-    //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-    $mail->isSMTP();                                            // Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'cosc4353fuelquoter@gmail.com';                     // SMTP username
-    $mail->Password   = '4353Fuelquoter';                               // SMTP password
-    $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+    try {
+      //Server settings
+      $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+      $mail->isSMTP();                                            // Send using SMTP
+      $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+      $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+      $mail->Username   = 'cosc4353fuelquoter@gmail.com';                     // SMTP username
+      $mail->Password   = '4353Fuelquoter';                               // SMTP password
+      $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+      $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
-    //Recipients
-    $mail->setFrom('cosc4353fuelquoter@gmail.com', 'Fuel Quoter');
-    $mail->addAddress($userEmail);     // Add a recipient
+      //Recipients
+      $mail->setFrom('cosc4353fuelquoter@gmail.com', 'Fuel Quoter');
+      $mail->addAddress($userEmail);     // Add a recipient
 
-    // Content
-    $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Reset your password for FuelQuoter';
-    $mail->Body    .= '<p>We received a password request. The link to reset your password is below. If you did not make this request, please ignore this email </p>';
-    $mail->Body    .= '<p>Here is your password reset link:</br>';
-    $mail->Body    .= '<a href="'.$url.'">'.$url.'</a></p>';
+      // Content
+      $mail->isHTML(true);                                  // Set email format to HTML
+      $mail->Subject = 'Reset your password for FuelQuoter';
+      $mail->Body    .= '<p>We received a password request. The link to reset your password is below. If you did not make this request, please ignore this email </p>';
+      $mail->Body    .= '<p>Here is your password reset link:</br>';
+      $mail->Body    .= '<a href="' . $url . '">' . $url . '</a></p>';
 
-    if($mail->send()){
-      echo 'Message has been sent';
+      if ($mail->send()) {
+        echo 'Message has been sent';
+      } else {
+        echo 'ERROR sending email';
+      }
+      $mail->smtpClose();
+
+      header("Location: ../forgotpassword.php?reset=success");
+    } catch (Exception $e) {
+      echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
-    else {
-      echo 'ERROR sending email';
-    }
-    $mail->smtpClose();
+  } //End of userResetPwdEmail
 
-    header("Location: ../forgotpassword.php?reset=success");
-
-  } catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-  }
-
-  }//End of userResetPwdEmail
-
-  protected function userResetPwd($selector, $validator, $password){
+  protected function userResetPwd($selector, $validator, $password)
+  {
 
     $currentDate = date("U");
     $sql = "SELECT * FROM pwdReset WHERE pwdResetSelector = ? AND pwdResetExpires >= ?";
@@ -233,15 +225,13 @@ class UserCredentials extends Dbh
     if (!$stmt) {
       echo 'There was an error!';
       exit();
-    }
-    else {
+    } else {
       $stmt->execute([$selector, $currentDate]);
 
       if (!$row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         echo 'You need to re-submit your reset request!';
         exit();
-      }
-      else {
+      } else {
 
         $tokenBin = hex2bin($validator);
         $tokenCheck = password_verify($tokenBin, $row['pwdResetToken']); //This is T/F statement to check if whether to token are matched
@@ -249,8 +239,7 @@ class UserCredentials extends Dbh
         if ($tokenCheck == false) {
           echo 'You need to re-submit your reset request';
           exit();
-        }
-        elseif ($tokenCheck == true) {
+        } elseif ($tokenCheck == true) {
 
           $tokenEmail = $row['pwdResetEmail'];
 
@@ -259,22 +248,19 @@ class UserCredentials extends Dbh
           if (!$stmt) {
             echo 'You need to re-submit your reset request!';
             exit();
-          }
-          else {
+          } else {
             $stmt->execute([$tokenEmail]);
 
             if (!$row = $stmt->fetch(PDO::FETCH_ASSOC)) {
               echo 'There was an error';
               exit();
-            }
-            else {
+            } else {
               $sql = "UPDATE userCredentials SET userPassword = ? WHERE userEmail = ?";
               $stmt = $this->connect()->prepare($sql);
               if (!$stmt) {
                 echo 'There was an error in updating new password!';
                 exit();
-              }
-              else {
+              } else {
                 $newPwdHash = password_hash($password, PASSWORD_DEFAULT);
                 $stmt->execute([$newPwdHash, $tokenEmail]);
 
@@ -284,8 +270,7 @@ class UserCredentials extends Dbh
                 if (!$stmt) {
                   echo 'There was an error in deleting token email!';
                   exit();
-                }
-                else {
+                } else {
                   $stmt->execute([$tokenEmail]);
                   header("Location: ../index.php?newpwd=passwordupdated");
                 }
@@ -295,8 +280,7 @@ class UserCredentials extends Dbh
         }
       }
     }
-
-  }// End of userResetPwd
+  } // End of userResetPwd
 
   protected function userCredentialsData()
   {
@@ -312,7 +296,7 @@ class UserCredentials extends Dbh
       </tr>";
     }
     return $userCredentialsData;
-  }//End of userCredentialsData
+  } //End of userCredentialsData
 
 
 
