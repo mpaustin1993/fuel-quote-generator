@@ -1,9 +1,9 @@
 <?php
-  include 'includes/autoloader.inc.php';
-  // $fuelQuoteObj = new FuelQuoteView();
-  $clientObj = new ClientProfileView();
-  $clientData = $clientObj->getClientData();
- ?>
+include 'includes/autoloader.inc.php';
+// $fuelQuoteObj = new FuelQuoteView();
+$clientObj = new ClientProfileView();
+$clientData = $clientObj->getClientData();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,18 +53,26 @@
                         Fuel Quote Form
                     </span>
 
+                    <?php
+                    if ($clientData == NULL) {
+                        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        You must complete your profile before you can generate a fuel quote.
+                        </div>';
+                    }
+                    ?>
+
                     <div class="row info-row">
-                      <div class="col-lg-12">
-                        <p class="info-topic">Delivery Address:</p>
-                        <p class="info-data"><?php
-                            if ($clientData != NULL) {
-                                echo $clientData['address1'] . " " . $clientData['address2'] . ", " . $clientData['city'] . ", " .$clientData['state'] . " " .$clientData['zip'];
-                            } else {
-                                echo 'N/A';
-                            }
-                            ?></p>
+                        <div class="col-lg-12">
+                            <p class="info-topic">Delivery Address:</p>
+                            <p class="info-data"><?php
+                                                    if ($clientData != NULL) {
+                                                        echo $clientData['address1'] . " " . $clientData['address2'] . ", " . $clientData['city'] . ", " . $clientData['state'] . " " . $clientData['zip'];
+                                                    } else {
+                                                        echo 'N/A';
+                                                    }
+                                                    ?></p>
                             <hr>
-                      </div>
+                        </div>
                     </div>
 
                     <input type="hidden" name="clientid" value="<?php echo $_SESSION['id']; ?>">
