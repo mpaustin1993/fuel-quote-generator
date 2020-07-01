@@ -12,6 +12,7 @@ if (isset($_POST['signup-submit'])) {
   $usersObj = new UserCredentialsControl();
 
   $usersObj->validateUserInput($email, $username, $password, $confirmPwd);
-} else {
+}
+else {
   header("Location: ../signup.php");
 }
