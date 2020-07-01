@@ -40,3 +40,14 @@ select {
 	outline: none;
 	border: none;
 }
+
+p.info-data {
+  font-size: 17px;
+  /* font-style: oblique; */
+  color:rgb(0, 0, 0);
+  padding-left: 10px;
+}
+
+p.info-topic {
+  font-size: 13px;
+}
