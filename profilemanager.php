@@ -38,6 +38,7 @@ $clientData = $clientObj->getClientData();
         ?>
         <div class="limiter">
             <div class="wrap-login100">
+
                 <div class="login100-pic js-tilt" data-tilt>
                     <img style="width: 30rem;" src="images/undraw_profile_6l1l.svg" alt="IMG">
 
