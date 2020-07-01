@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- For overriding small elements -->
-	<link rel="stylesheet" type="text/css" href="css/override.css">
+	<link rel="stylesheet" type="text/css" href="css/override3.css">
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/LogoNoBackground.png" />
 	<!--===============================================================================================-->
@@ -29,8 +29,8 @@
 	<div class="container">
 		<div class="limiter">
 			<div class="wrap-login100 signup">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img style="width: 50rem;" src="images/undraw_add_user_ipe3.svg" alt="IMG">
+				<div class="js-tilt" data-tilt>
+					<img style="width: 30rem;" src="images/undraw_add_user_ipe3.svg" alt="IMG">
 
 				</div>
 

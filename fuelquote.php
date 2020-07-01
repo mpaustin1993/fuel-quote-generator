@@ -1,6 +1,8 @@
 <?php
     include 'includes/autoloader.inc.php';
-    $fuelQuoteObj = new FuelQuoteView();
+    // $fuelQuoteObj = new FuelQuoteView();
+    $clientObj = new ClientProfileView();
+    $clientData = $clientObj->getClientData();
  ?>
 
 <!DOCTYPE html>
@@ -12,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- For overriding small elements -->
-  <link rel="stylesheet" type="text/css" href="css/override.css">
+  <link rel="stylesheet" type="text/css" href="css/override3.css">
   <!--===============================================================================================-->
   <link rel="icon" type="image/png" href="images/LogoNoBackground.png" />
   <!--===============================================================================================-->
@@ -117,7 +119,7 @@
               <div class="row">
                 <div class="col-sm-6">
                   <h6>Subtotal:</h6>
-                  <p>$1,790 / gallon</p>
+                  <p>$1,790</p>
                   <br>
                 </div>
                 <div class="col-sm-6">

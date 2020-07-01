@@ -1,7 +1,7 @@
 <?php
-include 'includes/autoloader.inc.php';
-$clientObj = new ClientProfileView();
-$clientData = $clientObj->getClientData();
+  include 'includes/autoloader.inc.php';
+  $clientObj = new ClientProfileView();
+  $clientData = $clientObj->getClientData();
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ $clientData = $clientObj->getClientData();
     <title>Profile Manager</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/override.css">
+    <link rel="stylesheet" type="text/css" href="css/override3.css">
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="images/LogoNoBackground.png" />
     <!--===============================================================================================-->
@@ -38,9 +38,9 @@ $clientData = $clientObj->getClientData();
         ?>
         <div class="limiter">
             <div class="wrap-login100">
-
-                <div class="login100-pic js-tilt" data-tilt>
-                    <img style="width: 30rem;" src="images/undraw_profile_6l1l.svg" alt="IMG">
+                <div class="js-tilt" data-tilt>
+                    <!-- <img style="width: 60rem;" src="images/undraw_profile_6l1l.svg" alt="IMG"> -->
+                    <img style="width: 35rem;" src="images/undraw_profile_6l1l.svg" alt="IMG">
 
                 </div>
 
@@ -86,99 +86,93 @@ $clientData = $clientObj->getClientData();
                     }
                     ?>
 
-                    <table class="table table-striped display" text-align="center" cellspacing="0">
+                    <div class="row info-row">
+                      <div class="col-lg-6">
+                        <p class="info-topic">Name:</p>
+                        <p class="info-data">
+                          <?php
+                            if ($clientData != NULL) {
+                                echo $clientData['name'];
+                            } else {
+                                echo 'N/A';
+                            }
+                         ?></p>
+                        <hr>
+                      </div>
+                      <div class="col-lg-6">
+                        <p class="info-topic">Username:</p>
+                        <p class="info-data"><?php echo $_SESSION['username']; ?></p>
+                        <hr>
+                      </div>
+                    </div>
 
-                        <tbody>
-                            <tr>
-                                <td><strong>Username</strong></td>
-                                <td><?php echo $_SESSION['username']; ?></td>
-                            </tr>
 
-                            <tr>
-                                <td><strong>Email</strong></td>
-                                <td><?php echo $_SESSION['email']; ?></td>
-                            </tr>
 
-                            <tr>
-                                <td><strong>Full Name</strong>
-                                <td><?php
-                                    if ($clientData != NULL) {
-                                        echo $clientData['name'];
-                                    } else {
-                                        echo 'N/A';
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
+                    <div class="row info-row">
+                      <div class="col-lg-12">
+                        <p class="info-topic">Email:</p>
+                        <p class="info-data"><?php echo $_SESSION['email']; ?></p>
+                        <hr>
+                      </div>
+                    </div>
 
-                            <tr>
-                                <td><strong>Address</strong>
-                                <td><?php
-                                    if ($clientData != NULL) {
-                                        echo $clientData['address1'];
-                                    } else {
-                                        echo 'N/A';
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
+                    <div class="row info-row">
+                      <div class="col-lg-12">
+                        <p class="info-topic">Address:</p>
+                        <p class="info-data"><?php
+                            if ($clientData != NULL) {
+                                echo $clientData['address1'] . " " . $clientData['address2'];
+                            } else {
+                                echo 'N/A';
+                            }
+                            ?></p>
+                            <hr>
+                      </div>
+                    </div>
 
-                            <tr>
-                                <td><strong>Apt. #</strong>
-                                <td><?php
-                                    if ($clientData != NULL) {
-                                        echo $clientData['address2'];
-                                    } else {
-                                        echo 'N/A';
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td><strong>City</strong>
-                                <td><?php
-                                    if ($clientData != NULL) {
-                                        echo $clientData['city'];
-                                    } else {
-                                        echo 'N/A';
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td><strong>State</strong>
-                                <td><?php
-                                    if ($clientData != NULL) {
-                                        echo $clientData['state'];
-                                    } else {
-                                        echo 'N/A';
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td><strong>Zip Code</strong>
-                                <td> <?php
-                                        if ($clientData != NULL) {
-                                            echo $clientData['zip'];
-                                        } else {
-                                            echo 'N/A';
-                                        }
-                                        ?>
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
+                    <div class="row info-row">
+                      <div class="col-lg-4">
+                        <p class="info-topic">City:</p>
+                        <p class="info-data"><?php
+                            if ($clientData != NULL) {
+                                echo $clientData['city'];
+                            } else {
+                                echo 'N/A';
+                            }
+                            ?></p>
+                            <hr>
+                      </div>
+                      <div class="col-lg-4">
+                        <p class="info-topic">State:</p>
+                        <p class="info-data"><?php
+                            if ($clientData != NULL) {
+                                echo $clientData['state'];
+                            } else {
+                                echo 'N/A';
+                            }
+                            ?></p>
+                            <hr>
+                      </div>
+                      <div class="col-lg-4">
+                        <p class="info-topic">Zip:</p>
+                        <p class="info-data"><?php
+                            if ($clientData != NULL) {
+                                echo $clientData['zip'];
+                            } else {
+                                echo 'N/A';
+                            }
+                            ?></p>
+                            <hr>
+                      </div>
+                    </div>
 
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" type="submit" name="editprofile-submit">
                             Edit Profile
                         </button>
                     </div>
+
+                  </div>
             </div>
 
 

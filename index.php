@@ -29,7 +29,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
+				<div class="js-tilt" data-tilt>
 					<img style="width: 25rem;" src="images/signin_undraw.svg" alt="">
 				</div>
 
