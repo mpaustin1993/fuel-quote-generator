@@ -25,5 +25,6 @@ class FuelQuote extends Dbh
 
   protected function fuelQuoteData()
   { //Extracting data from the DB , including quoteHistory and currentQuote
+    
   }
 }

@@ -45,7 +45,14 @@ class UserCredentialsControl extends UserCredentials
   }
 
   public function userResetPwdEmailInput($userEmail){
-    $this->userResetPwdEmail($userEmail);
+    if (!filter_var($userEmail, FILTER_VALIDATE_EMAIL)) { //This use to check if the email is valid
+      header("Location: ../forgotpassword.php?error=invalidemail");
+      exit();
+    }
+    else {
+      $this->userResetPwdEmail($userEmail);
+    }
+
   }
 
   public function userResetPwdInput($selector, $validator, $password){
