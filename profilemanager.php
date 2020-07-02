@@ -143,6 +143,7 @@ $clientData = $clientObj->getClientData();
             </button>
           </div>
 
+          <!-- Modal for profile edit -->
           <div class="modal fade in" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
@@ -245,13 +246,15 @@ $clientData = $clientObj->getClientData();
                         <?php
                           $stateArray = array('TX', 'AZ', 'MS', 'TE','KE', 'CA', 'IL', 'NV');
 
+                          //Displaying all states to be choose
                           if ($clientData == NULL) {
                             echo '<option>State</option>';
                             foreach($stateArray as $state){
                               echo "<option value=".$state.">".$state."</option>";
                             }
                           } else {
-                            if (($key = array_search($clientData['state'], $stateArray)) !== false) { //This is for delete the element in the array which is already assigned to the profile
+                            //This is for delete the state in the array which is already assigned to the profile
+                            if (($key = array_search($clientData['state'], $stateArray)) !== false) {
                                 unset($stateArray[$key]);
                             }
                             echo "<option value=".$clientData['state'].">".$clientData['state']."</option>";
