@@ -11,7 +11,7 @@ $clientData = $clientObj->getClientData();
   <title>Profile Manager</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/override3.css">
+  <link rel="stylesheet" type="text/css" href="css/override.css">
   <!--===============================================================================================-->
   <link rel="icon" type="image/png" href="images/LogoNoBackground.png" />
   <!--===============================================================================================-->
@@ -49,9 +49,6 @@ $clientData = $clientObj->getClientData();
           </span>
 
 
-
-
-
           <?php
           if ($clientData == NULL) {
             echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -60,7 +57,6 @@ $clientData = $clientObj->getClientData();
           }
 
           ?>
-
 
 
           <div class="row info-row">
@@ -245,18 +241,26 @@ $clientData = $clientObj->getClientData();
                   </div>
 
                   <div class="wrap-input100">
-                    <select class="input100" type="text" name="state">
-                      <option value="<?php echo $clientData['state'] ?>" placeholder><?php
-                                                                                      if ($clientData != NULL) {
-                                                                                        echo $clientData['state'];
-                                                                                      } else {
-                                                                                        echo "State";
-                                                                                      }
-                                                                                      ?></option>
-                      <option value="TX">TX</option>
-                      <option value="AZ">AZ</option>
-                      <option value="MS">MS</option>
-                      <option value="TE">TE</option>
+                    <select class="input100" type="text" name="state" placeholder="State">
+                        <?php
+                          $stateArray = array('TX', 'AZ', 'MS', 'TE','KE', 'CA', 'IL', 'NV');
+
+                          if ($clientData == NULL) {
+                            echo '<option>State</option>';
+                            foreach($stateArray as $state){
+                              echo "<option value=".$state.">".$state."</option>";
+                            }
+                          } else {
+                            if (($key = array_search($clientData['state'], $stateArray)) !== false) { //This is for delete the element in the array which is already assigned to the profile
+                                unset($stateArray[$key]);
+                            }
+                            echo "<option value=".$clientData['state'].">".$clientData['state']."</option>";
+                            foreach($stateArray as $state){
+                              echo "<option value=".$state.">".$state."</option>";
+                            }
+                          }
+                        ?>
+
                     </select>
                     <span class="symbol-input100">
                       <i class="fa fa-map" aria-hidden="true"></i>

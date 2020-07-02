@@ -52,3 +52,11 @@ p.info-data {
 p.info-topic {
   font-size: 13px;
 }
+
+.modal-content {
+  border-radius: 10px !important;
+}
+
+.modal-body {
+	padding: 40px 35px !important;
+}
