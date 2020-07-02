@@ -58,6 +58,7 @@ $clientData = $clientObj->getClientData();
           Your profile is incomplete.
           </div>';
           }
+
           ?>
 
 
@@ -194,20 +195,6 @@ $clientData = $clientObj->getClientData();
                 ?>
 
                 <div class="modal-body">
-
-                  <!-- <div class="wrap-input100">
-                    <input class="input100" type="text" name="username" value=<?php echo $_SESSION['username']; ?> placeholder="<?php echo $_SESSION['username']; ?>">
-                    <span class="symbol-input100">
-                      <i class="fa fa-user" aria-hidden="true"></i>
-                    </span>
-                  </div>
-
-                  <div class="wrap-input100">
-                    <input class="input100" type="text" name="email" value=<?php echo $_SESSION['email']; ?> placeholder="<?php echo $_SESSION['email']; ?>">
-                    <span class="symbol-input100">
-                      <i class="fa fa-envelope" aria-hidden="true"></i>
-                    </span>
-                  </div> -->
 
                   <div class="wrap-input100">
                     <input class="input100" type="text" name="name" value="<?php

@@ -3,21 +3,21 @@
 class FuelQuoteControl extends FuelQuote
 {
 
-  public function fuelQuoteInputSubmission($quoteClientId, $quoteGallon, $quoteAddress, $quoteCity, $quoteState, $quoteZip, $quoteDeliveryDate)
+  public function fuelQuoteInputSubmission($quoteClientId, $quoteGallons, $quoteState, $quoteDate)
   {
 
     //If one of the field is empty, the error will return and entered input will be set
-    if (empty($quoteGallon) || empty($quoteAddress) || empty($quoteCity) || empty($quoteState) || empty($quoteZip) || empty($quoteDeliveryDate)) {
-      header("Location: ../fuelquoteform.php?error=emptyfield&deliveryAdr=" . $quoteAddress . "&deliveryCity=" . $quoteCity . "&Zip=" . $quoteZip);
+    if (empty($quoteClientId) || empty($quoteGallons) || empty($quoteState) || empty($quoteDate)) {
+      header("Location: ../fuelquoteform.php?error=emptyfield&cid=" . $quoteClientId . "&gallon=" . $quoteGallons . "&state=" . $quoteState . "&delivery=" . $quoteDate);
       exit();
-    } elseif (!preg_match("/^[a-zA-Z]*$/", $quoteCity)) {   //Regex for City using only letters
+    } elseif (!preg_match("/^[0-9]*$/", $quoteGallons)) {   //Regex for City using only letters
       header("Location: ../fuelquoteform.php?error=invalidZip");
       exit();
-    } elseif (!preg_match("/^[0-9]{5,9}$/", $quoteZip)) {   //Regex for Zip using only digits
-      header("Location: ../fuelquoteform.php?error=invalidZip");
+    } elseif (!preg_match("/^[A-Z]{2}$/", $quoteState)) {
+      header("Location: ../fuelquoteform.php?error=invalidstate");
       exit();
     } else {
-      $this->fuelQuoteInput($quoteClientId, $quoteGallon, $quoteAddress, $quoteCity, $quoteState, $quoteZip, $quoteDeliveryDate);
+      $this->fuelQuoteInput($quoteClientId, $quoteGallons, $quoteDate);
     }
   }
 }

@@ -77,6 +77,8 @@ $clientData = $clientObj->getClientData();
 
                     <input type="hidden" name="clientid" value="<?php echo $_SESSION['id']; ?>">
 
+                    <input type="hidden" name="state" value="<?php echo $clientData['state']; ?>">
+
                     <div class="wrap-input100 validate-input" data-validate="Gallons requested">
                         <input class="input100" type="number" name="gallons" required placeholder="Gallons Requested">
                         <span class="focus-input100"></span>
