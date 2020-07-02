@@ -45,6 +45,13 @@
 								</div>';
 							}
 						}
+						elseif(isset($_GET['error'])){
+							if ($_GET['error'] == 'invalidemail') {
+								echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+								Invalid email address. Please use the format: ex@abc.xyz
+							  </div>';
+							}
+						}
 					 ?>
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email" placeholder="Email">

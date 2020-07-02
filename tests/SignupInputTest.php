@@ -2,8 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-class UserCredentialsControlTest extends TestCase {
-
+class SignupInputTest extends TestCase {
 
   public function testValidateUserInputEmpty ()
   {
@@ -28,20 +27,24 @@ class UserCredentialsControlTest extends TestCase {
 
   public function testValidateUsername()
   {
-    $username = 'viponline';
+    $correctUsername = 'viponline';
+    $incorrectUsername = 'viponline@!';
 
-    $this->assertEquals($username, preg_match($username, "/^[a-zA-Z0-9]*$/"));
+    $this->assertMatchesRegularExpression("/^[a-zA-Z0-9]*$/", $correctUsername);
+    $this->assertMatchesRegularExpression("/^[a-zA-Z0-9]*$/", $incorrectUsername);
 
   }
 
   public function testPasswordMatchInput(){
 
-    $password = '123456';
-    $confirmPwd = '123456';
+    $password = 'pwddemo123456!';
+    $noMatchConfirmPwd = '123456';
+    $matchConfirmPwd = 'pwddemo123456!';
 
-    // $this->assertTrue(False);
+    // $this->assertEquals($password, $noMatchConfirmPwd);
+    $this->assertEquals($password, $matchConfirmPwd);
+    $this->assertEquals($password, $noMatchConfirmPwd);
 
-    $this->assertEquals($password, $confirmPwd);
   }
 
 }
