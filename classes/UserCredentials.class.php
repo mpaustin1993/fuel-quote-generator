@@ -69,6 +69,22 @@ class UserCredentials extends Dbh
           $_SESSION['username'] = $row['userName'];
           $_SESSION['email'] = $row['userEmail'];
 
+          $sql = "SELECT * FROM clientProfile WHERE clientUserId = ?;";
+          $stmt = $this->connect()->prepare($sql);
+
+          if (!$stmt) {
+            header("Location: ../index.php?error=sqlError");
+            exit();
+          } else {
+            $stmt->execute([$_SESSION['id']]);
+
+            if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+              $_SESSION['client'] = $row['clientId'];
+              header("Location: ../profilemanager.php?login=success&clientId=" . $_SESSION['client']);
+              exit();
+            }
+          }
+
           header("Location: ../profilemanager.php?login=success");
           exit();
         } else {

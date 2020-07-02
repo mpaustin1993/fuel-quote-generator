@@ -1,9 +1,9 @@
 <?php
-    include 'includes/autoloader.inc.php';
-    // $fuelQuoteObj = new FuelQuoteView();
-    $clientObj = new ClientProfileView();
-    $clientData = $clientObj->getClientData();
- ?>
+include 'includes/autoloader.inc.php';
+// $fuelQuoteObj = new FuelQuoteView();
+$clientObj = new ClientProfileView();
+$clientData = $clientObj->getClientData();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,30 +69,13 @@
                 </tr>
               </thead>
 
+              <!-- produces table info for client -->
+
               <tbody>
-                <tr>
-                  <td>37</td>
-                  <td>10/20/20</td>
-                  <td>100</td>
-                  <td>$3.40/Gal</td>
-                  <td>$340</td>
-                </tr>
-
-                <tr>
-                  <td>20</td>
-                  <td>09/27/20</td>
-                  <td>200</td>
-                  <td>$2.70/Gal</td>
-                  <td>$540</td>
-                </tr>
-
-                <tr>
-                  <td>12</td>
-                  <td>06/16/20</td>
-                  <td>1000</td>
-                  <td>$2.59/Gal</td>
-                  <td>$2,590</td>
-                </tr>
+                <?php
+                $quoteObj = new FuelQuoteView();
+                echo $quoteObj->fuelQuoteDataShow();
+                ?>
               </tbody>
             </table>
           </div>
@@ -129,8 +112,6 @@
                 </div>
 
               </div>
-
-
 
               <h6>Total Amount Due:</h6>
               <h4>$1,937.68 </h4>
