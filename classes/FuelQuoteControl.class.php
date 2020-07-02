@@ -3,12 +3,12 @@
 class FuelQuoteControl extends FuelQuote
 {
 
-  public function fuelQuoteInputSubmission($quoteClientId, $quoteGallons, $quoteState, $quoteDate)
+  public function fuelQuoteInputSubmission($quoteClientId, $quoteGallons, $quoteState, $quoteDeliveryDate)
   {
 
     //If one of the field is empty, the error will return and entered input will be set
-    if (empty($quoteClientId) || empty($quoteGallons) || empty($quoteState) || empty($quoteDate)) {
-      header("Location: ../fuelquoteform.php?error=emptyfield&cid=" . $quoteClientId . "&gallon=" . $quoteGallons . "&state=" . $quoteState . "&delivery=" . $quoteDate);
+    if (empty($quoteClientId) || empty($quoteGallons) || empty($quoteState) || empty($quoteDeliveryDate)) {
+      header("Location: ../fuelquoteform.php?error=emptyfield&cid=" . $quoteClientId . "&gallon=" . $quoteGallons . "&state=" . $quoteState . "&delivery=" . $quoteDeliveryDate);
       exit();
     } elseif (!preg_match("/^[0-9]*$/", $quoteGallons)) {   //Regex for City using only letters
       header("Location: ../fuelquoteform.php?error=invalidZip");
@@ -17,7 +17,7 @@ class FuelQuoteControl extends FuelQuote
       header("Location: ../fuelquoteform.php?error=invalidstate");
       exit();
     } else {
-      $this->fuelQuoteInput($quoteClientId, $quoteGallons, $quoteDate);
+      $this->fuelQuoteInput($quoteClientId, $quoteGallons, $quoteDeliveryDate);
     }
   }
 }

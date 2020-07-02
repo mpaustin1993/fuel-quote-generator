@@ -75,7 +75,9 @@ $clientData = $clientObj->getClientData();
                         </div>
                     </div>
 
-                    <input type="hidden" name="clientid" value="<?php echo $_SESSION['id']; ?>">
+                    <!-- passing clientId -->
+
+                    <input type="hidden" name="clientid" value="<?php echo $_SESSION['client']; ?>">
 
                     <input type="hidden" name="state" value="<?php echo $clientData['state']; ?>">
 
