@@ -17,7 +17,7 @@ class FuelQuote extends Dbh
       exit();
     } else {
       $stmt->execute([$quoteClientId, $quoteGallons, $quoteDeliveryDate]);
-      header("Location: ../fuelquote.php?&editprofile=success&cid=" . $quoteClientId . "&gallon=" . $quoteGallons . "&quoteDeliveryDate=" . $quoteDeliveryDate);
+      header("Location: ../fuelquote.php?&generatequote=success");
       exit();
     }
     $this->connect()->null;
