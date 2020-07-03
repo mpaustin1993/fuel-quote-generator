@@ -2,7 +2,6 @@
 
 use PHPUnit\Framework\TestCase;
 
-
 class ForgotPasswordTest extends TestCase
 {
 
@@ -13,6 +12,5 @@ class ForgotPasswordTest extends TestCase
 
     $this->assertEquals($userCorrectEmail, filter_var($userCorrectEmail, FILTER_VALIDATE_EMAIL));
     $this->assertEquals($userIncorrectEmail, filter_var($userIncorrectEmail, FILTER_VALIDATE_EMAIL));
-
   }
 }

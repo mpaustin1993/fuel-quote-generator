@@ -3,15 +3,29 @@
 <phpunit bootstrap="vendor/autoload.php"
           colors="true"
           verbose="true"
-          stopOnFailure="true"
           >
 
-  <testsuits>
-    <testsuit name="unit">
+  <testsuites>
+    <testsuite name="unit">
 
       <directory>tests</directory> <!-- look inside the test folder, there are tests -->
 
-    </testsuit>
-  </testsuits>
+    </testsuite>
+  </testsuites>
+
+  <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">C:\xampp\htdocs\Software-Design\Software-design-project\tests</directory>
+        </whitelist>
+  </filter>
+
+<logging>
+    <log lowUpperBound="35" highLowerBound="70" showUncoveredFiles="true" />
+    <log type="coverage-html" target="C:\xampp\htdocs\Software-Design\Software-design-project\tests\coverage" showUncoveredFiles="true"/>
+</logging>
 
 </phpunit>
+
+
+
+
