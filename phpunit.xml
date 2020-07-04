@@ -3,15 +3,21 @@
 <phpunit bootstrap="vendor/autoload.php"
           colors="true"
           verbose="true"
-          stopOnFailure="true"
           >
 
-  <testsuits>
-    <testsuit name="unit">
+  <testsuites>
+    <testsuite name="unit">
 
       <directory>tests</directory> <!-- look inside the test folder, there are tests -->
 
-    </testsuit>
-  </testsuits>
+    </testsuite>
+  </testsuites>
+
+  <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">/Applications/XAMPP/xamppfiles/htdocs/COSC4353Project/tests</directory>
+        </whitelist>
+  </filter>
+
 
 </phpunit>
