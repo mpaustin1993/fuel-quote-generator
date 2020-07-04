@@ -2,3 +2,7 @@ node_modules/
 
 # MacOS file
 .DS_Store
+
+phpunit.xml
+
+/vendor/bin/phpunit
