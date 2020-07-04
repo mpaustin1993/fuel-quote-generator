@@ -35,7 +35,8 @@ class SignupInputTest extends TestCase {
 
   }
 
-  public function testPasswordMatchInput(){
+  public function testPasswordMatchInput()
+  {
 
     $password = 'pwddemo123456!';
     $noMatchConfirmPwd = '123456';

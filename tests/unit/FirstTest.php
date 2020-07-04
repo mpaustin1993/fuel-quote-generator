@@ -10,5 +10,5 @@ class FirstTest extends TestCase {
     $c = 5 * 3;
     $this->assertEquals($c, 15);
   }
-  
+
 }

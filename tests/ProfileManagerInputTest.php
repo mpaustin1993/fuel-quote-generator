@@ -8,13 +8,12 @@ class ProfileManagerInputTest extends TestCase
     {
       $correctClientName = 'Han Bui';
       $incorrectClientName = 'Han Bui !';
-      $incorrectClientName1 = 'HanBui';
+      $incorrectClientName1 = 'HanBui'; //Company Name
 
       $this->assertMatchesRegularExpression("/^([a-zA-Z]+([\ a-zA-Z.]+)*){1,50}$/", $correctClientName);
-
       $this->assertMatchesRegularExpression("/^([a-zA-Z]+([\ a-zA-Z.]+)*){1,50}$/", $incorrectClientName); //Fail
 
-      // Bug in regex where the clientName are continuous without space (e.g. misisng firstname or lastname)
+      // //Regex where the clientName are continuous without space (e.g. misisng firstname or lastname)
       $this->assertMatchesRegularExpression("/^([a-zA-Z]+([\ a-zA-Z.]+)*){1,50}$/", $incorrectClientName1); //Fail
 
     } //End testProfileManagerNameInput
