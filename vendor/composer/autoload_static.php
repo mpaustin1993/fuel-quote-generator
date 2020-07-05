@@ -8,11 +8,16 @@ class ComposerStaticInitef13b82ac3f93245b371857fc08cba0b
 {
     public static $files = array (
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'y' => 
+        array (
+            'yidas\\yii2BowerAsset\\' => 21,
+        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
@@ -24,6 +29,7 @@ class ComposerStaticInitef13b82ac3f93245b371857fc08cba0b
         'S' => 
         array (
             'Symfony\\Polyfill\\Ctype\\' => 23,
+            'Symfony\\Component\\Process\\' => 26,
         ),
         'P' => 
         array (
@@ -37,6 +43,10 @@ class ComposerStaticInitef13b82ac3f93245b371857fc08cba0b
     );
 
     public static $prefixDirsPsr4 = array (
+        'yidas\\yii2BowerAsset\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yidas/yii2-bower-asset',
+        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
@@ -51,6 +61,10 @@ class ComposerStaticInitef13b82ac3f93245b371857fc08cba0b
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
+        'Symfony\\Component\\Process\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/process',
+        ),
         'Prophecy\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
@@ -62,6 +76,23 @@ class ComposerStaticInitef13b82ac3f93245b371857fc08cba0b
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'C' => 
+        array (
+            'ComponentInstaller' => 
+            array (
+                0 => __DIR__ . '/..' . '/robloach/component-installer/src',
+            ),
+        ),
+        'A' => 
+        array (
+            'Assetic' => 
+            array (
+                0 => __DIR__ . '/..' . '/kriswallsmith/assetic/src',
+            ),
         ),
     );
 
@@ -747,6 +778,7 @@ class ComposerStaticInitef13b82ac3f93245b371857fc08cba0b
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitef13b82ac3f93245b371857fc08cba0b::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitef13b82ac3f93245b371857fc08cba0b::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitef13b82ac3f93245b371857fc08cba0b::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitef13b82ac3f93245b371857fc08cba0b::$classMap;
 
         }, null, ClassLoader::class);

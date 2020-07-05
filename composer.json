@@ -2,6 +2,10 @@
 	"require": {
 		"phpunit/phpunit": "^9",
 		"twbs/bootstrap": "^4.5",
-		"components/jquery": "^3.5"		
+		"components/jquery": "^3.5",
+		"components/font-awesome": "^5.13",
+		"yidas/yii2-bower-asset": "2.0.13.1",
+		"drmonty/animate.css": "^3.5",
+		"select2/select2": "^4.0"		
 	}
 }
