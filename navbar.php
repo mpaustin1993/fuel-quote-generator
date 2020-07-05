@@ -12,12 +12,11 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <?php
-            if ($clientData != NULL) {
-              echo $clientData['name'];
-            }
-            else {
-              echo $_SESSION['username'];
-            }
+          if ($clientData != NULL) {
+            echo $clientData['name'];
+          } else {
+            echo $_SESSION['username'];
+          }
           ?>
           <!-- Drop down -->
         </a>
