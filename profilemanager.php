@@ -1,22 +1,14 @@
-<?php
-include 'includes/autoloader.inc.php';
-$clientObj = new ClientProfileView();
-$clientData = $clientObj->getClientData();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <title>Profile Manager</title>
+  <title>Login</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" type="text/css" href="css/main.css">
-  
   <!--===============================================================================================-->
   <link rel="icon" type="image/png" href="images/LogoNoBackground.png" />
   <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
   <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
   <!--===============================================================================================-->
@@ -26,12 +18,10 @@ $clientData = $clientObj->getClientData();
   <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
   <!--===============================================================================================-->
-
-  <link rel="stylesheet" type="text/css" href="css/main.css">
   <link rel="stylesheet" type="text/css" href="css/util.css">
-  <link rel="stylesheet" type="text/css" href="css/override.css">
-  <link rel="stylesheet" type="text/css" href="css/overmain.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
   <!--===============================================================================================-->
+</head>
 
 
 <body>
@@ -51,6 +41,12 @@ $clientData = $clientObj->getClientData();
           <span class="login100-form-title">
             Your Profile
           </span>
+
+          <?php
+          include 'includes/autoloader.inc.php';
+          $clientObj = new ClientProfileView();
+          $clientData = $clientObj->getClientData();
+          ?>
 
 
           <?php
