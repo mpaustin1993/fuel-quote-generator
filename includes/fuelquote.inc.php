@@ -6,13 +6,16 @@ include 'autoloader.inc.php';
 if (isset($_POST['quote-input'])) {
 
   $quoteClientId = $_POST['clientid'];
-  $quoteGallons = $_POST['gallons'];
+  $quoteGallons = $_POST['quoteGallons'];
+  $quotePPG = $_POST['quotePPG'];
+  $quoteTotal = $_POST['quoteTotal'];
   $quoteState = $_POST['state'];
-  $quoteDeliveryDate = $_POST['deliveryDate'];
+  $quoteDeliveryDate = $_POST['quoteDeliveryDate'];
 
   $fuelQuoteObj = new FuelQuoteControl();
-  $fuelQuoteObj->fuelQuoteInputSubmission($quoteClientId, $quoteGallons, $quoteState, $quoteDeliveryDate);
-} else {
-  header("Location: ../fuelquoteform.php");
+  $fuelQuoteObj->fuelQuoteInputSubmission($quoteClientId, $quoteGallons, $quotePPG, $quoteTotal, $quoteState, $quoteDeliveryDate);
+}
+else {
+  header("Location: ../fuelquoteform.php?error=placeOrder");
   exit();
 }

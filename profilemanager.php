@@ -1,10 +1,17 @@
+<?php
+include 'includes/autoloader.inc.php';
+$clientObj = new ClientProfileView();
+$clientData = $clientObj->getClientData();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <title>Login</title>
+  <title>Profile Manager</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/override3.css">
   <!--===============================================================================================-->
   <link rel="icon" type="image/png" href="images/LogoNoBackground.png" />
   <!--===============================================================================================-->
@@ -19,9 +26,9 @@
   <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
   <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="css/util.css">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/overmain.css">
   <!--===============================================================================================-->
-</head>
+
 
 <body>
   <div class="container">
@@ -40,12 +47,6 @@
           <span class="login100-form-title">
             Your Profile
           </span>
-
-          <?php
-          include 'includes/autoloader.inc.php';
-          $clientObj = new ClientProfileView();
-          $clientData = $clientObj->getClientData();
-          ?>
 
 
           <?php
@@ -242,26 +243,26 @@
 
                   <div class="wrap-input100">
                     <select class="input100" type="text" name="state" placeholder="State">
-                      <?php
-                      $stateArray = array('TX', 'AZ', 'MS', 'TE', 'KE', 'CA', 'IL', 'NV');
+                        <?php
+                          $stateArray = array('TX', 'AZ', 'MS', 'TE','KE', 'CA', 'IL', 'NV');
 
-                      //Displaying all states to be choose
-                      if ($clientData == NULL) {
-                        echo '<option>State</option>';
-                        foreach ($stateArray as $state) {
-                          echo "<option value=" . $state . ">" . $state . "</option>";
-                        }
-                      } else {
-                        //This is for delete the state in the array which is already assigned to the profile
-                        if (($key = array_search($clientData['state'], $stateArray)) !== false) {
-                          unset($stateArray[$key]);
-                        }
-                        echo "<option value=" . $clientData['state'] . ">" . $clientData['state'] . "</option>";
-                        foreach ($stateArray as $state) {
-                          echo "<option value=" . $state . ">" . $state . "</option>";
-                        }
-                      }
-                      ?>
+                          //Displaying all states to be choose
+                          if ($clientData == NULL) {
+                            echo '<option>State</option>';
+                            foreach($stateArray as $state){
+                              echo "<option value=".$state.">".$state."</option>";
+                            }
+                          } else {
+                            //This is for delete the state in the array which is already assigned to the profile
+                            if (($key = array_search($clientData['state'], $stateArray)) !== false) {
+                                unset($stateArray[$key]);
+                            }
+                            echo "<option value=".$clientData['state'].">".$clientData['state']."</option>";
+                            foreach($stateArray as $state){
+                              echo "<option value=".$state.">".$state."</option>";
+                            }
+                          }
+                        ?>
 
                     </select>
                     <span class="symbol-input100">
@@ -318,9 +319,9 @@
     })
   </script>
 
-  <!-- <script>
+  <script>
     $('.modal').modal('show');
-  </script> -->
+  </script>
 
   <!--===============================================================================================-->
   <script src="js/main.js"></script>
