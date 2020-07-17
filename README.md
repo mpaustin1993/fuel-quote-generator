@@ -1,12 +1,19 @@
 # Software-Design-Project
 
-Our Software Design project for COSC 4353 at the University of Houston.
+Our final project for the Software Design class at the University of Houston.
+
+This is a PHP & MySQL MVC web app that generates and stores a fuel delivery quote based on customer history, location, and gallons requested.
+
+Developing this project, I learned PHP authentication and authorization, cookie storing and retrieval, MySQL backend routing and management, and AWS PHP app deployment.
+
+The most difficult portion of this project was getting the PHPUnit and PHP-code-coverage modules to function properly and produce a code coverage report.
 
 ## Technologies
 
 -  Database: MySQL
 -  Backend: PHP
--  Frontend: HTML & Bootstrap CSS
+-  Frontend: PHP, HTML, & Bootstrap CSS
+-  Testing: PHPUnit
 
 ## Authors
 
