@@ -1,8 +1,9 @@
-node_modules/
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
 
-# Windows PHP files
-vendor/bin/phpunit
 phpunit.xml
-
-# MacOS file
-.DS_Store
+vendor\bin\phpunit
+software-design-project.zip

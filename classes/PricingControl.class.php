@@ -3,18 +3,21 @@
 class PricingControl extends Pricing
 {
 
-  public function pricingInputSubmission($priceGallon, $priceState, $priceFirst)
+  public function pricingInputSubmission($pricingClientId, $pricingGallons, $pricingState, $deliveryDate)
   {
-
     //If one of the field is empty, the error will return and entered input will be set
-    if (empty($priceGallon) || empty($priceState) || empty($priceFirst)) {
-      header("Location: ../fuelquoteform.php?error=emptyfield");
+    if (empty($pricingGallons) || empty($pricingState) || empty($deliveryDate)) {
+      header("Location: ../fuelquoteform.php?error=emptypricefield&gallon=" . $pricingGallons . "&state=" . $pricingState);
       exit();
-    } elseif (!preg_match("/^[A-Z]{2}$/", $priceState)) {
-      header("Location: ../profilemanager.php?error=invalidstate");
+    } elseif (!preg_match("/^[0-9]*$/", $pricingGallons)) {   //Regex for City using only letters
+      header("Location: ../fuelquoteform.php?error=invalidgallons");
+      exit();
+    } elseif (!preg_match("/^[A-Z]{2}$/", $pricingState)) {
+      header("Location: ../fuelquoteform.php?error=invalidstate");
       exit();
     } else {
-      $this->pricingInput($priceGallon, $priceState, $priceFirst);
+      $this->pricingInput($pricingClientId, $pricingGallons, $pricingState, $deliveryDate);
     }
-  }
+
+  } //End of pricingInputSubmission
 }

@@ -3,7 +3,6 @@ include 'includes/autoloader.inc.php';
 // $fuelQuoteObj = new FuelQuoteView();
 $clientObj = new ClientProfileView();
 $clientData = $clientObj->getClientData();
-
 ?>
 
 <!DOCTYPE html>
@@ -53,102 +52,40 @@ $clientData = $clientObj->getClientData();
     <div class="limiter">
 
       <div class="wrap-container">
-        <div class="row">
-          <div class="col-lg-8">
-            <span class="login100-form-title">
-              Quote History
-            </span>
-            <!-- Below are much data showing the history of the quote -->
-            <table class="table table-bordered display" text-align="center" cellspacing="0">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Delivery Date</th>
-                  <th>Gallon(s)</th>
-                  <th>PPG</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
+        <span class="login100-form-title">
+          Quote History
+        </span>
+        <!-- Below are much data showing the history of the quote -->
+        <table class="table table-bordered display" text-align="center" cellspacing="0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Delivery Date</th>
+              <th>Gallon(s)</th>
+              <th>Quote</th>
+              <th>Total</th>
+            </tr>
+          </thead>
 
-              <!-- produces table info for client -->
+          <!-- produces table info for client -->
 
-              <tbody>
-                <?php
+          <tbody>
+            <?php
 
-                if (isset($_GET['placeorder'])) {
-                  if ($_GET['placeorder'] == "success") {
-                    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                    Order placed! Feel free to review your order details under Your Order.
-                    </div>';
-                  }
-                }
-                $quoteObj = new FuelQuoteView();
-                echo $quoteObj->fuelQuoteDataShow();
 
-                ?>
-              </tbody>
-            </table>
-          </div>
+            $quoteObj = new FuelQuoteView();
+            echo $quoteObj->fuelQuoteDataShow();
 
-          <div class="col-lg-4">
-            <form class="login120-form validate-form">
-              <span class="login100-form-title">
-                Your Order
-              </span>
-              <div class="row">
-                <div class="col-lg-12">
-                  <p class="info-topic">Delivery Date:</p>
-                  <p class="info-data">
-                    <?php
-                    $date = date_create($_SESSION['deliveryDate']);
-                    echo date_format($date,"m/d/Y");
-                    ?>
-                  </p>
-                  <hr>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <p class="info-topic">Suggested Price / Gallon:</p>
-                  <p class="info-data">$<?php echo $_SESSION['ppg']; ?> / gallon</p>
-                  <hr>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                    <p class="info-topic">Number of Gallon(s):</p>
-                    <p class="info-data"><?php echo $_SESSION['gallons']; ?> gallon(s)</p>
-                    <hr>
-                </div>
-              </div>
-
-              <h6>Total Amount Due:</h6>
-              <h4>$<?php echo $_SESSION['total']; ?></h4>
-
-              <div class="container-login100-form-btn">
-                <a class="login100-form-btn" href="fuelquoteform.php" role="button">
-                  Get New Quote
-                </a>
-              </div>
-
-            </form>
-          </div>
-
-        </div>
+            ?>
+          </tbody>
+        </table>
       </div>
 
     </div>
   </div>
 
-  <?php
-  // sets price session values back to null so that user doesn't see same quote information after Placing Order - prevents duplicate quotes
+  </div>
 
-  $_SESSION['ppg'] = "";
-  $_SESSION['total'] = "";
-  $_SESSION['gallons'] = "";
-  $_SESSION['deliveryDate'] = "";
-
-  ?>
 
 
 
@@ -168,9 +105,7 @@ $clientData = $clientObj->getClientData();
 
     // Call the dataTables jQuery plugin
     $(document).ready(function() {
-      $('table.display').DataTable({
-        "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]]
-      });
+      $('table.display').DataTable();
     });
   </script>
   <!--===============================================================================================-->
